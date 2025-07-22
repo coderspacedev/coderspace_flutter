@@ -5,12 +5,12 @@ enum SnackBarType { success, error, info, warning }
 
 extension SnackBarExtension on BuildContext {
   void showSnackBar(
-      String message, {
-        SnackBarType type = SnackBarType.info,
-        Duration duration = const Duration(seconds: 3),
-        String? title,
-        IconData? icon,
-      }) {
+    String message, {
+    SnackBarType type = SnackBarType.info,
+    Duration duration = const Duration(seconds: 3),
+    String? title,
+    IconData? icon,
+  }) {
     Color backgroundColor;
     IconData defaultIcon;
 
@@ -28,7 +28,6 @@ extension SnackBarExtension on BuildContext {
         defaultIcon = Icons.warning;
         break;
       case SnackBarType.info:
-      default:
         backgroundColor = Colors.blue;
         defaultIcon = Icons.info;
         break;
@@ -49,8 +48,7 @@ extension SnackBarExtension on BuildContext {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (title != null)
-                    Text(title, style: bodyBoldLarge.copyWith(color: Colors.white)),
+                  if (title != null) Text(title, style: bodyBoldLarge.copyWith(color: Colors.white)),
                   Text(message, style: caption.copyWith(color: Colors.white)),
                 ],
               ),
