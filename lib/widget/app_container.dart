@@ -33,7 +33,12 @@ class AppContainer extends StatelessWidget {
       height: height,
       margin: margin,
       padding: padding,
-      decoration: decoration ?? BoxDecoration(color: color ?? colorCard, borderRadius: BorderRadius.circular(radius ?? context.scale(12))),
+      decoration:
+          decoration ??
+          BoxDecoration(
+            color: color ?? colorCard,
+            borderRadius: BorderRadius.circular(radius ?? context.scale(12)),
+          ),
       child: child,
     );
   }

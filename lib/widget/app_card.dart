@@ -42,9 +42,20 @@ class AppCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(title, style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600)),
-                    if (subtitle != null) ...[const SizedBox(height: 4), Text(subtitle!, style: context.bodySmall)],
-                    if (showDivider) ...[const SizedBox(height: 12), Divider(height: 1, color: Colors.grey.withAlpha(84))],
+                    Text(
+                      title,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    if (subtitle != null) ...[
+                      const SizedBox(height: 4),
+                      Text(subtitle!, style: context.bodySmall),
+                    ],
+                    if (showDivider) ...[
+                      const SizedBox(height: 12),
+                      Divider(height: 1, color: Colors.grey.withAlpha(84)),
+                    ],
                   ],
                 ),
               ),

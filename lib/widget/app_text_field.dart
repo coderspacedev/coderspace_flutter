@@ -39,14 +39,24 @@ class AppTextField extends StatelessWidget {
       style: context.bodyLarge,
       inputFormatters: inputFormatters,
       decoration: InputDecoration(
-        prefixIcon: prefixIcon != null ? Icon(prefixIcon, color: colorText) : null,
+        prefixIcon: prefixIcon != null
+            ? Icon(prefixIcon, color: colorText)
+            : null,
         suffixIcon: suffixIcon,
         hintText: hint,
         hintStyle: context.bodyLarge.copyWith(color: colorText.withAlpha(100)),
         filled: true,
         fillColor: colorCard,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(context.scale(12)), borderSide: BorderSide.none),
-        contentPadding: contentPadding ?? EdgeInsets.symmetric(horizontal: context.scale(16), vertical: context.scale(14)),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(context.scale(12)),
+          borderSide: BorderSide.none,
+        ),
+        contentPadding:
+            contentPadding ??
+            EdgeInsets.symmetric(
+              horizontal: context.scale(16),
+              vertical: context.scale(14),
+            ),
       ),
     );
   }

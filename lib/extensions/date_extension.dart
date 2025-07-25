@@ -1,5 +1,6 @@
 extension DateTimeExtensions on DateTime {
-  String get formattedDate => "${day.toString().padLeft(2, '0')}/${month.toString().padLeft(2, '0')}/$year";
+  String get formattedDate =>
+      "${day.toString().padLeft(2, '0')}/${month.toString().padLeft(2, '0')}/$year";
   String get timeAgo {
     final now = DateTime.now();
     final difference = now.difference(this);

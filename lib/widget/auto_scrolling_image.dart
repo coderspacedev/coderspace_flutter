@@ -64,17 +64,23 @@ class _AutoScrollingImageState extends State<AutoScrollingImage> {
   Widget build(BuildContext context) {
     final children = List.generate(
       widget.repetitionCount,
-          (_) => Image.asset(
+      (_) => Image.asset(
         widget.assetPath,
         fit: widget.fit,
-        width: widget.axis == ScrollAxis.vertical ? widget.width ?? double.infinity : null,
-        height: widget.axis == ScrollAxis.horizontal ? widget.height ?? double.infinity : null,
+        width: widget.axis == ScrollAxis.vertical
+            ? widget.width ?? double.infinity
+            : null,
+        height: widget.axis == ScrollAxis.horizontal
+            ? widget.height ?? double.infinity
+            : null,
       ),
     );
 
     return SingleChildScrollView(
       controller: _scrollController,
-      scrollDirection: widget.axis == ScrollAxis.horizontal ? Axis.horizontal : Axis.vertical,
+      scrollDirection: widget.axis == ScrollAxis.horizontal
+          ? Axis.horizontal
+          : Axis.vertical,
       physics: const NeverScrollableScrollPhysics(),
       child: widget.axis == ScrollAxis.horizontal
           ? Row(children: children)

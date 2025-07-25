@@ -2,8 +2,7 @@ import 'package:coderspace/coderspace.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-extension AppStyles on BuildContext{
-
+extension AppStyles on BuildContext {
   double scale(double size) => size * _scale;
 
   double get _scale {
@@ -14,11 +13,11 @@ extension AppStyles on BuildContext{
   }
 
   TextStyle baseTextStyle(
-      double fontSize, {
-        FontWeight fontWeight = FontWeight.normal,
-        double lineHeight = 1.2,
-        Color? color,
-      }) {
+    double fontSize, {
+    FontWeight fontWeight = FontWeight.normal,
+    double lineHeight = 1.2,
+    Color? color,
+  }) {
     return GoogleFonts.poppins(
       fontSize: scale(fontSize),
       fontWeight: fontWeight,

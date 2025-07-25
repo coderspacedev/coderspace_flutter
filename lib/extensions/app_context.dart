@@ -9,8 +9,8 @@ extension ContextExtension on BuildContext {
   double get paddingRight => MediaQuery.of(this).padding.right;
   double get screenHeightWithoutSystemBars =>
       MediaQuery.of(this).size.height -
-          MediaQuery.of(this).padding.top -
-          MediaQuery.of(this).padding.bottom;
+      MediaQuery.of(this).padding.top -
+      MediaQuery.of(this).padding.bottom;
   bool get isPortrait =>
       MediaQuery.of(this).orientation == Orientation.portrait;
   bool get isLandscape =>

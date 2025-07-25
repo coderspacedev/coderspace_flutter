@@ -52,7 +52,11 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: isBack
           ? IconButton(
               onPressed: onBack ?? () => Navigator.of(context).pop(),
-              icon: Icon(icon ?? Icons.arrow_back_rounded, size: context.scale(24), color: iconColor ?? colorText),
+              icon: Icon(
+                icon ?? Icons.arrow_back_rounded,
+                size: context.scale(24),
+                color: iconColor ?? colorText,
+              ),
               padding: EdgeInsets.zero,
               splashColor: Colors.transparent,
               highlightColor: Colors.transparent,
@@ -60,10 +64,17 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
           : null,
       title: title != null
           ? Padding(
-              padding: EdgeInsets.only(left: isBack ? context.scale(4) : context.scale(16)),
+              padding: EdgeInsets.only(
+                left: isBack ? context.scale(4) : context.scale(16),
+              ),
               child: Text(
                 title!,
-                style: titleStyle ?? context.headline5.copyWith(color: textColor ?? colorText, fontWeight: FontWeight.w600),
+                style:
+                    titleStyle ??
+                    context.headline5.copyWith(
+                      color: textColor ?? colorText,
+                      fontWeight: FontWeight.w600,
+                    ),
               ),
             )
           : const SizedBox.shrink(),
@@ -73,5 +84,7 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight((toolbarHeight ?? 56) + (bottom?.preferredSize.height ?? 0));
+  Size get preferredSize => Size.fromHeight(
+    (toolbarHeight ?? 56) + (bottom?.preferredSize.height ?? 0),
+  );
 }

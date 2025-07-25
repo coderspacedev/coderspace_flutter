@@ -48,7 +48,11 @@ extension SnackBarExtension on BuildContext {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (title != null) Text(title, style: bodyBoldLarge.copyWith(color: Colors.white)),
+                  if (title != null)
+                    Text(
+                      title,
+                      style: bodyBoldLarge.copyWith(color: Colors.white),
+                    ),
                   Text(message, style: caption.copyWith(color: Colors.white)),
                 ],
               ),
