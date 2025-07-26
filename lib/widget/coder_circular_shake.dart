@@ -3,9 +3,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import 'dart:math';
-import 'package:flutter/material.dart';
-
 /// A widget that applies a circular shaking animation to its [child].
 ///
 /// This is useful for drawing user attention to a widget with a subtle
