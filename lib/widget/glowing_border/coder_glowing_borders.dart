@@ -3,7 +3,48 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'coder_animated_gradient_container.dart';
 
+/// A glowing, animated gradient border that wraps a child widget.
+///
+/// The [CoderAnimatedGradientBorder] widget animates a sweep gradient
+/// around its child with an optional glowing blur effect and customizable
+/// rotation speed, border thickness, and axis stretching.
 class CoderAnimatedGradientBorder extends StatefulWidget {
+  /// The widget to display inside the animated border.
+  final Widget child;
+
+  /// The colors to animate in the rotating gradient.
+  final List<Color> gradientColors;
+
+  /// The radius of the border corners.
+  final BorderRadiusGeometry borderRadius;
+
+  /// The thickness of the animated border. Default is `null` (no border).
+  final double? borderSize;
+
+  /// The size of the glow effect around the border. Default is `null` (no glow).
+  final double? glowSize;
+
+  /// The duration (in seconds) of a full 360° rotation animation.
+  ///
+  /// If `null`, defaults to `2` seconds.
+  final int? animationTime;
+
+  /// Manually control the animation's progress, from `0.0` to `1.0`.
+  ///
+  /// If `null`, the animation loops continuously.
+  final double? animationProgress;
+
+  /// Whether to stretch the child widget to fill the specified [stretchAxis].
+  final bool stretchAlongAxis;
+
+  /// The axis to stretch if [stretchAlongAxis] is true.
+  ///
+  /// Default is [Axis.horizontal].
+  final Axis stretchAxis;
+
+  /// Creates a glowing animated gradient border around the [child].
+  ///
+  /// Requires [gradientColors] and [borderRadius] to be provided.
   const CoderAnimatedGradientBorder({
     super.key,
     required this.child,
@@ -17,20 +58,11 @@ class CoderAnimatedGradientBorder extends StatefulWidget {
     this.stretchAxis = Axis.horizontal,
   });
 
-  final Widget child;
-  final double? borderSize;
-  final double? glowSize;
-  final List<Color> gradientColors;
-  final BorderRadiusGeometry borderRadius;
-  final int? animationTime;
-  final double? animationProgress;
-  final bool stretchAlongAxis;
-  final Axis stretchAxis;
-
   @override
   State<StatefulWidget> createState() => AnimatedGradientState();
 }
 
+/// The [State] implementation for [CoderAnimatedGradientBorder].
 class AnimatedGradientState extends State<CoderAnimatedGradientBorder>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
@@ -48,6 +80,7 @@ class AnimatedGradientState extends State<CoderAnimatedGradientBorder>
       begin: 0.1,
       end: 2 * math.pi,
     ).animate(_controller);
+
     if (widget.animationProgress != null) {
       _controller.forward();
     } else {
@@ -85,6 +118,7 @@ class AnimatedGradientState extends State<CoderAnimatedGradientBorder>
         alignment: Alignment.center,
         clipBehavior: Clip.none,
         children: [
+          // Outer animated gradient layer (background border)
           Positioned(
             top: negativeMargin,
             left: negativeMargin,
@@ -96,6 +130,8 @@ class AnimatedGradientState extends State<CoderAnimatedGradientBorder>
               gradientAngle: _angleAnimation.value,
             ),
           ),
+
+          // Blur glow effect layer
           BackdropFilter(
             filter: ImageFilter.blur(
               sigmaX: widget.glowSize ?? 0,
@@ -105,6 +141,7 @@ class AnimatedGradientState extends State<CoderAnimatedGradientBorder>
               alignment: Alignment.center,
               clipBehavior: Clip.none,
               children: [
+                // Foreground animated gradient layer
                 Positioned(
                   top: negativeMargin,
                   right: negativeMargin,
@@ -116,6 +153,8 @@ class AnimatedGradientState extends State<CoderAnimatedGradientBorder>
                     gradientAngle: _angleAnimation.value,
                   ),
                 ),
+
+                // Wrapped child widget
                 if (widget.stretchAlongAxis)
                   SizedBox(
                     width: widget.stretchAxis == Axis.horizontal
@@ -136,3 +175,4 @@ class AnimatedGradientState extends State<CoderAnimatedGradientBorder>
     );
   }
 }
+

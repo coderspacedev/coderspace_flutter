@@ -1,15 +1,30 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 
+/// Enum to define scroll direction.
 enum ScrollAxis { horizontal, vertical }
 
+/// A widget that scrolls an image repeatedly in a given direction.
 class CoderAutoScrollingImage extends StatefulWidget {
+  /// Path to the image asset. This is required.
   final String assetPath;
+
+  /// Direction to scroll the image: horizontal or vertical.
   final ScrollAxis axis;
+
+  /// Speed of the auto-scrolling animation. Higher means faster.
   final double scrollSpeed;
+
+  /// How to inscribe the image into the space allocated.
   final BoxFit fit;
+
+  /// Number of times to repeat the image for continuous scrolling effect.
   final int repetitionCount;
+
+  /// Width of each image widget (used for vertical scrolling).
   final double? width;
+
+  /// Height of each image widget (used for horizontal scrolling).
   final double? height;
 
   const CoderAutoScrollingImage({
@@ -24,7 +39,8 @@ class CoderAutoScrollingImage extends StatefulWidget {
   });
 
   @override
-  State<CoderAutoScrollingImage> createState() => _CoderAutoScrollingImageState();
+  State<CoderAutoScrollingImage> createState() =>
+      _CoderAutoScrollingImageState();
 }
 
 class _CoderAutoScrollingImageState extends State<CoderAutoScrollingImage> {
@@ -38,6 +54,7 @@ class _CoderAutoScrollingImageState extends State<CoderAutoScrollingImage> {
     _startScrolling();
   }
 
+  /// Starts a periodic timer to scroll the content by small steps.
   void _startScrolling() {
     _scrollTimer = Timer.periodic(const Duration(milliseconds: 30), (_) {
       if (_scrollController.hasClients) {
@@ -62,9 +79,10 @@ class _CoderAutoScrollingImageState extends State<CoderAutoScrollingImage> {
 
   @override
   Widget build(BuildContext context) {
+    // Generate repeated image widgets.
     final children = List.generate(
       widget.repetitionCount,
-      (_) => Image.asset(
+          (_) => Image.asset(
         widget.assetPath,
         fit: widget.fit,
         width: widget.axis == ScrollAxis.vertical
@@ -88,3 +106,4 @@ class _CoderAutoScrollingImageState extends State<CoderAutoScrollingImage> {
     );
   }
 }
+

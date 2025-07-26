@@ -4,3 +4,4 @@
   - `CoderShakingIcon`, `CoderCircularShake`
 - Rename Widget: 
   - `CoderAnimatedGradientBorder`, `CoderAutoScrollingImage`, `CoderBar`, `CoderButton`, `CoderCard`, `CoderContainer`, `CoderTextField`
+- Add Usage: 
