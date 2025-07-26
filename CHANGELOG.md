@@ -1,3 +1,4 @@
-## [1.0.4] - 2025-07-26
+## [1.0.5] - 2025-07-26
 ### Update
-- Add Home Page
+- Add Example
+- `Update Card`

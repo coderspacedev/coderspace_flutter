@@ -22,10 +22,16 @@ extension SnackBarExtension on BuildContext {
   void showSnackBar(
     String message, {
     SnackBarType type = SnackBarType.info,
-    Duration duration = const Duration(seconds: 3),
+    Duration duration = const Duration(seconds: 1),
     String? title,
     IconData? icon,
   }) {
+    final messenger = ScaffoldMessenger.maybeOf(this);
+    if (messenger == null) {
+      debugPrint('⚠️ ScaffoldMessenger not found. SnackBar not shown.');
+      return;
+    }
+
     // Set background color and default icon based on type
     Color backgroundColor;
     IconData defaultIcon;

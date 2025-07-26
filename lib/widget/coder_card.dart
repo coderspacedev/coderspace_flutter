@@ -16,34 +16,40 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class CoderCard extends StatelessWidget {
-  /// Widget displayed at the start (e.g., icon or avatar).
+  /// Widget displayed at the start (e.g., icon, avatar, etc.).
   final Widget? leading;
 
   /// Main title text of the card.
   final String title;
 
-  /// Optional subtitle shown below the title.
+  /// Optional subtitle shown below the [title].
   final String? subtitle;
 
-  /// Widget displayed at the end (e.g., an arrow or button).
+  /// Widget displayed at the end (e.g., arrow icon, toggle switch, etc.).
   final Widget? trailing;
 
-  /// Callback triggered when the card is tapped.
+  /// Called when the card is tapped.
   final VoidCallback? onTap;
 
-  /// Background color of the card. Defaults to [colorCard] if not provided.
+  /// Background color of the card. Defaults to [colorCard] if not specified.
   final Color? backgroundColor;
 
-  /// Padding inside the card content.
+  /// Padding applied inside the card content.
   final EdgeInsetsGeometry padding;
 
-  /// Border radius of the card's corners.
+  /// The border radius applied to the card’s corners.
   final double borderRadius;
 
-  /// Whether to show a divider below the subtitle (visually separates cards).
+  /// Whether to show a divider line below the subtitle.
   final bool showDivider;
 
-  /// Creates a CoderCard with rich content and interaction.
+  /// Optional color for the title text.
+  final Color? textColor;
+
+  /// Optional color for the subtitle text.
+  final Color? subtitleColor;
+
+  /// Creates a [CoderCard] with optional customization.
   const CoderCard({
     super.key,
     this.leading,
@@ -55,6 +61,8 @@ class CoderCard extends StatelessWidget {
     this.padding = const EdgeInsets.all(16),
     this.borderRadius = 12,
     this.showDivider = false,
+    this.textColor,
+    this.subtitleColor,
   });
 
   @override
@@ -69,21 +77,31 @@ class CoderCard extends StatelessWidget {
           padding: padding,
           child: Row(
             children: [
+              // Show leading widget if provided
               if (leading != null) ...[leading!, const SizedBox(width: 12)],
+              // Expandable content area for title and subtitle
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // Title text
                     Text(
                       title,
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.w600,
+                      style: context.bodyBoldLarge.copyWith(
+                        color: textColor ?? colorText,
                       ),
                     ),
+                    // Subtitle if present
                     if (subtitle != null) ...[
                       const SizedBox(height: 4),
-                      Text(subtitle!, style: context.bodySmall),
+                      Text(
+                        subtitle!,
+                        style: context.bodySmall.copyWith(
+                          color: subtitleColor ?? colorText.withOpacity(0.7),
+                        ),
+                      ),
                     ],
+                    // Optional divider
                     if (showDivider) ...[
                       const SizedBox(height: 12),
                       Divider(height: 1, color: Colors.grey.withAlpha(84)),
@@ -91,6 +109,7 @@ class CoderCard extends StatelessWidget {
                   ],
                 ),
               ),
+              // Show trailing widget if provided
               if (trailing != null) ...[const SizedBox(width: 12), trailing!],
             ],
           ),
