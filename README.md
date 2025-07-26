@@ -165,15 +165,15 @@ CoderAnimatedGradientBorder(
 A reusable widget that applies a continuous shaking animation to any icon, SVG, or image asset. Fully customizable direction, speed, and size.
 ```dart
 CoderShakingIcon(
-svgAssetPath: 'assets/icons/crown.svg', // ✅ Optional: SVG asset path (requires flutter_svg)
-imageAssetPath: 'assets/images/star.png', // ✅ Optional: Image asset path (e.g., PNG/JPG)
-iconData: Icons.star, // ✅ Optional: Flutter built-in IconData
-color: Colors.orangeAccent, // Optional: Color to apply to the icon/image/SVG
-size: 24.0, // Optional: Size of the icon/image in logical pixels
-duration: Duration(milliseconds: 600), // Optional: One full shake cycle duration
-shakeOffset: 4.0, // Optional: Max distance to move during shake
-shakeDirection: Axis.horizontal, // Optional: Shake along horizontal or vertical axis
-blendMode: BlendMode.srcIn, // Optional: Blend mode for SVG or image color filter
+  svgAssetPath: 'assets/icons/crown.svg', // ✅ Optional: SVG asset path (requires flutter_svg)
+  imageAssetPath: 'assets/images/star.png', // ✅ Optional: Image asset path (e.g., PNG/JPG)
+  iconData: Icons.star, // ✅ Optional: Flutter built-in IconData
+  color: Colors.orangeAccent, // Optional: Color to apply to the icon/image/SVG
+  size: 24.0, // Optional: Size of the icon/image in logical pixels
+  duration: Duration(milliseconds: 600), // Optional: One full shake cycle duration
+  shakeOffset: 4.0, // Optional: Max distance to move during shake
+  shakeDirection: Axis.horizontal, // Optional: Shake along horizontal or vertical axis
+  blendMode: BlendMode.srcIn, // Optional: Blend mode for SVG or image color filter
 )
 ```
 
@@ -181,8 +181,8 @@ blendMode: BlendMode.srcIn, // Optional: Blend mode for SVG or image color filte
 A widget that applies a fast circular shaking animation to its child. Ideal for attention-grabbing UI elements like badges, buttons, icons, or alerts.
 ```dart
 CoderCircularShake(
-child: Icon(Icons.notifications_active), // ✅ Required: Widget to shake
-duration: Duration(milliseconds: 800),    // Optional: Duration to keep shaking (default: 700ms)
+  child: Icon(Icons.notifications_active), // ✅ Required: Widget to shake
+  duration: Duration(milliseconds: 800),    // Optional: Duration to keep shaking (default: 700ms)
 )
 ```
 
