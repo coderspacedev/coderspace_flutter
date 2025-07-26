@@ -258,7 +258,7 @@ final ago = yesterday.timeAgo;
 
 ### 🚀 About Me
 
-I'm a Android Developer and Flutter beginner <br />
+I'm a Senior Flutter Developer <br />
 Please remember one thing in developing: *"Develop Innovative"*
 
 ### 📝 Author Profile
