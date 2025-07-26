@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:coderspace/coderspace.dart';
 
-class AppButton extends StatelessWidget {
+class CoderButton extends StatelessWidget {
   final String text;
   final Function()? onPressed;
   final Color? backgroundColor;
@@ -16,7 +16,7 @@ class AppButton extends StatelessWidget {
   final bool isLoading;
   final Widget? icon;
 
-  const AppButton({
+  const CoderButton({
     super.key,
     required this.text,
     required this.onPressed,

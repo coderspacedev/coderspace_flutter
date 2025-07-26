@@ -23,10 +23,10 @@ dependencies:
 
 ## 📖 Usage
 
-#### 🧱 AppAppBar
+#### 🧱 CoderBar - AppBar
 A customizable AppBar widget to streamline your screen headers with built-in support for back navigation, styling, and layout control.
 ```dart
-AppAppBar(
+CoderBar(
   title: 'Page Title', // Title text of the AppBar
   icon: Icons.arrow_back_ios, // Custom back icon (default is arrow_back_rounded)
   backgroundColor: Colors.white, // Background color of the AppBar
@@ -54,10 +54,10 @@ AppAppBar(
 )
 ```
 
-#### 🧱 AppButton
+#### 🧱 CoderButton - Button
 A customizable button with built-in loading state, icon support, and full styling control.
 ```dart
-AppButton(
+CoderButton(
   text: 'Submit', // ✅ Required: Button text label
   onPressed: () {
     // ✅ Required: Tap handler
@@ -76,10 +76,10 @@ AppButton(
 )
 ```
 
-#### 🧱 AppCard
+#### 🧱 CoderCard - Card
 A reusable, tappable card with leading/trailing widgets, title, subtitle, and optional divider.
 ```dart
-AppCard(
+CoderCard(
   leading: Icon(Icons.info_outline), // Optional: Widget shown at the start (e.g., icon/image)
   title: 'Card Title', // ✅ Required: Main title text
   subtitle: 'Optional subtitle text', // Optional: Smaller text under the title
@@ -94,10 +94,10 @@ AppCard(
 )
 ```
 
-#### 🧱 AppContainer
+#### 🧱 CoderContainer - Container
 A flexible container widget with built-in styling, padding, margin, alignment, and decoration support.
 ```dart
-AppContainer(
+CoderContainer(
   child: Text('Hello Container'), // Optional: The child widget inside the container
   width: 200, // Optional: Width of the container
   height: 100, // Optional: Height of the container
@@ -112,10 +112,10 @@ AppContainer(
 )
 ```
 
-#### 🧱 AppTextField
+#### 🧱 CoderTextField - TextField
 A styled text field with built-in support for hint text, icons, secure input, and formatting.
 ```dart
-AppTextField(
+CoderTextField(
   controller: myController, // ✅ Required: Controller to manage text input
   hint: 'Enter your email', // Optional: Placeholder hint text
   prefixIcon: Icons.email, // Optional: Leading icon inside the text field
@@ -129,10 +129,10 @@ AppTextField(
 )
 ```
 
-#### 🧱 AutoScrollingImage
+#### 🧱 CoderAutoScrollingImage - AutoScrollingImage
 A widget that automatically scrolls a repeated image horizontally or vertically, great for animated backgrounds, banners, or texture effects.
 ```dart
-AutoScrollingImage(
+CoderAutoScrollingImage(
   assetPath: 'assets/images/scroll_bg.png', // ✅ Required: Path to the local asset image
   axis: ScrollAxis.horizontal, // Optional: Direction of scroll (horizontal or vertical)
   scrollSpeed: 2.0, // Optional: Speed of the auto-scroll (default is 1.0)
@@ -143,10 +143,10 @@ AutoScrollingImage(
 )
 ```
 
-#### 🧱 AnimatedGradientBorder
+#### 🧱 CoderAnimatedGradientBorder - AnimatedGradientBorder
 A glowing, animated gradient border that wraps any widget with smooth rotation, optional blur, and axis stretching.
 ```dart
-AnimatedGradientBorder(
+CoderAnimatedGradientBorder(
   child: Text('Glowing Border'), // ✅ Required: The widget to wrap inside the border
   gradientColors: [Colors.purple, Colors.blue, Colors.cyan], // ✅ Required: Colors for animated gradient
   borderRadius: BorderRadius.circular(16), // ✅ Required: Corner radius of the border
@@ -156,6 +156,31 @@ AnimatedGradientBorder(
   animationProgress: null, // Optional: Use to animate to specific point (0 to 1); if null, loops
   stretchAlongAxis: false, // Optional: Stretch the child widget along one axis
   stretchAxis: Axis.horizontal, // Optional: Axis to stretch if `stretchAlongAxis` is true
+)
+```
+
+#### 💫 CoderShakingIcon - ShakingIcon
+A reusable widget that applies a continuous shaking animation to any icon, SVG, or image asset. Fully customizable direction, speed, and size.
+```dart
+CoderShakingIcon(
+svgAssetPath: 'assets/icons/crown.svg', // ✅ Optional: SVG asset path (requires flutter_svg)
+imageAssetPath: 'assets/images/star.png', // ✅ Optional: Image asset path (e.g., PNG/JPG)
+iconData: Icons.star, // ✅ Optional: Flutter built-in IconData
+color: Colors.orangeAccent, // Optional: Color to apply to the icon/image/SVG
+size: 24.0, // Optional: Size of the icon/image in logical pixels
+duration: Duration(milliseconds: 600), // Optional: One full shake cycle duration
+shakeOffset: 4.0, // Optional: Max distance to move during shake
+shakeDirection: Axis.horizontal, // Optional: Shake along horizontal or vertical axis
+blendMode: BlendMode.srcIn, // Optional: Blend mode for SVG or image color filter
+)
+```
+
+#### 🌀 CoderCircularShake - CircularShake
+A widget that applies a fast circular shaking animation to its child. Ideal for attention-grabbing UI elements like badges, buttons, icons, or alerts.
+```dart
+CoderCircularShake(
+child: Icon(Icons.notifications_active), // ✅ Required: Widget to shake
+duration: Duration(milliseconds: 800),    // Optional: Duration to keep shaking (default: 700ms)
 )
 ```
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:coderspace/coderspace.dart';
 
-class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
+class CoderBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
   final IconData? icon;
   final Color? backgroundColor;
@@ -19,7 +19,7 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool automaticallyImplyLeading;
   final PreferredSizeWidget? bottom;
 
-  const AppAppBar({
+  const CoderBar({
     super.key,
     this.title,
     this.icon,
@@ -48,35 +48,38 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
       automaticallyImplyLeading: automaticallyImplyLeading,
       forceMaterialTransparency: forceMaterialTransparency,
       titleSpacing: titleSpacing ?? 0,
-      toolbarHeight: toolbarHeight ?? context.scale(56),
-      leading: isBack
+      toolbarHeight: toolbarHeight ?? (context.isTabletSize
+          ?  100.0 : 56.0),
+      leading:
+      isBack
           ? IconButton(
-              onPressed: onBack ?? () => Navigator.of(context).pop(),
-              icon: Icon(
-                icon ?? Icons.arrow_back_rounded,
-                size: context.scale(24),
-                color: iconColor ?? colorText,
-              ),
-              padding: EdgeInsets.zero,
-              splashColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-            )
+        onPressed: onBack ?? () => Navigator.of(context).pop(),
+        icon: Icon(
+          icon ?? Icons.arrow_back_rounded,
+          size: context.scale(24),
+          color: iconColor ?? colorText,
+        ),
+        padding: EdgeInsets.zero,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+      )
           : null,
-      title: title != null
+      title:
+      title != null
           ? Padding(
-              padding: EdgeInsets.only(
-                left: isBack ? context.scale(4) : context.scale(16),
+        padding: EdgeInsets.only(
+          left: isBack ? context.scale(4) : context.scale(16),
+        ),
+        child: Text(
+          title!,
+          style:
+          titleStyle ??
+              context.headline5.copyWith(
+                color: textColor ?? colorText,
+                fontWeight: FontWeight.w600,
               ),
-              child: Text(
-                title!,
-                style:
-                    titleStyle ??
-                    context.headline5.copyWith(
-                      color: textColor ?? colorText,
-                      fontWeight: FontWeight.w600,
-                    ),
-              ),
-            )
+        ),
+      )
           : const SizedBox.shrink(),
       actions: actions,
       bottom: bottom,
@@ -84,7 +87,13 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(
-    (toolbarHeight ?? 56) + (bottom?.preferredSize.height ?? 0),
-  );
+  Size get preferredSize {
+    final shortestSide = WidgetsBinding.instance.platformDispatcher.views.first.physicalSize.shortestSide /
+        WidgetsBinding.instance.platformDispatcher.views.first.devicePixelRatio;
+
+    final defaultToolbarHeight = toolbarHeight ??
+        (shortestSide > 600 ? 100.0 : 56.0);
+
+    return Size.fromHeight(defaultToolbarHeight + (bottom?.preferredSize.height ?? 0));
+  }
 }

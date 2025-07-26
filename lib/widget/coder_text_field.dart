@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:coderspace/coderspace.dart';
 
-class AppTextField extends StatelessWidget {
+class CoderTextField extends StatelessWidget {
   final TextEditingController controller;
   final String? hint;
   final IconData? prefixIcon;
@@ -14,7 +14,7 @@ class AppTextField extends StatelessWidget {
   final bool enabled;
   final EdgeInsetsGeometry? contentPadding;
 
-  const AppTextField({
+  const CoderTextField({
     super.key,
     required this.controller,
     this.hint,

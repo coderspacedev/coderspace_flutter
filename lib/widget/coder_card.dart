@@ -1,7 +1,7 @@
 import 'package:coderspace/coderspace.dart';
 import 'package:flutter/material.dart';
 
-class AppCard extends StatelessWidget {
+class CoderCard extends StatelessWidget {
   final Widget? leading;
   final String title;
   final String? subtitle;
@@ -12,7 +12,7 @@ class AppCard extends StatelessWidget {
   final double borderRadius;
   final bool showDivider;
 
-  const AppCard({
+  const CoderCard({
     super.key,
     this.leading,
     required this.title,

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-class AnimatedGradientContainer extends StatelessWidget {
-  const AnimatedGradientContainer({
+class CoderAnimatedGradientContainer extends StatelessWidget {
+  const CoderAnimatedGradientContainer({
     super.key,
     required this.gradientColors,
     required this.gradientAngle,

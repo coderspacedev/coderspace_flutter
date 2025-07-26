@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 enum ScrollAxis { horizontal, vertical }
 
-class AutoScrollingImage extends StatefulWidget {
+class CoderAutoScrollingImage extends StatefulWidget {
   final String assetPath;
   final ScrollAxis axis;
   final double scrollSpeed;
@@ -12,7 +12,7 @@ class AutoScrollingImage extends StatefulWidget {
   final double? width;
   final double? height;
 
-  const AutoScrollingImage({
+  const CoderAutoScrollingImage({
     super.key,
     required this.assetPath,
     this.axis = ScrollAxis.horizontal,
@@ -24,10 +24,10 @@ class AutoScrollingImage extends StatefulWidget {
   });
 
   @override
-  State<AutoScrollingImage> createState() => _AutoScrollingImageState();
+  State<CoderAutoScrollingImage> createState() => _CoderAutoScrollingImageState();
 }
 
-class _AutoScrollingImageState extends State<AutoScrollingImage> {
+class _CoderAutoScrollingImageState extends State<CoderAutoScrollingImage> {
   final ScrollController _scrollController = ScrollController();
   late Timer _scrollTimer;
   double _scrollPosition = 0.0;

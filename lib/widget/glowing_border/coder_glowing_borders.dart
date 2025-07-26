@@ -1,10 +1,10 @@
 import 'dart:math' as math;
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
-import 'animated_gradient_container.dart';
+import 'coder_animated_gradient_container.dart';
 
-class AnimatedGradientBorder extends StatefulWidget {
-  const AnimatedGradientBorder({
+class CoderAnimatedGradientBorder extends StatefulWidget {
+  const CoderAnimatedGradientBorder({
     super.key,
     required this.child,
     required this.gradientColors,
@@ -31,7 +31,7 @@ class AnimatedGradientBorder extends StatefulWidget {
   State<StatefulWidget> createState() => AnimatedGradientState();
 }
 
-class AnimatedGradientState extends State<AnimatedGradientBorder>
+class AnimatedGradientState extends State<CoderAnimatedGradientBorder>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation _angleAnimation;
@@ -62,7 +62,7 @@ class AnimatedGradientState extends State<AnimatedGradientBorder>
   }
 
   @override
-  void didUpdateWidget(covariant AnimatedGradientBorder oldWidget) {
+  void didUpdateWidget(covariant CoderAnimatedGradientBorder oldWidget) {
     super.didUpdateWidget(oldWidget);
     final animateTo = widget.animationProgress;
     if (animateTo != null) {
@@ -90,7 +90,7 @@ class AnimatedGradientState extends State<AnimatedGradientBorder>
             left: negativeMargin,
             right: negativeMargin,
             bottom: negativeMargin,
-            child: AnimatedGradientContainer(
+            child: CoderAnimatedGradientContainer(
               gradientColors: widget.gradientColors,
               borderRadius: widget.borderRadius,
               gradientAngle: _angleAnimation.value,
@@ -110,7 +110,7 @@ class AnimatedGradientState extends State<AnimatedGradientBorder>
                   right: negativeMargin,
                   left: negativeMargin,
                   bottom: negativeMargin,
-                  child: AnimatedGradientContainer(
+                  child: CoderAnimatedGradientContainer(
                     gradientColors: widget.gradientColors,
                     borderRadius: widget.borderRadius,
                     gradientAngle: _angleAnimation.value,

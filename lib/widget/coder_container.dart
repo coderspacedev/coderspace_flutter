@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:coderspace/coderspace.dart';
 
-class AppContainer extends StatelessWidget {
+class CoderContainer extends StatelessWidget {
   final Widget? child;
   final double? width;
   final double? height;
@@ -12,7 +12,7 @@ class AppContainer extends StatelessWidget {
   final double? radius;
   final Alignment? alignment;
 
-  const AppContainer({
+  const CoderContainer({
     super.key,
     this.child,
     this.width,

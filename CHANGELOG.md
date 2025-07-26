@@ -1,6 +1,6 @@
-## [1.0.1] - 2025-07-25
+## [1.0.2] - 2025-07-26
 ### Added
-- Published initial version with reusable UI components:
-  - `AppAppBar`, `AppButton`, `AppCard`, `AppContainer`, `AppTextField`
-  - `GlowingBorder`, `AutoScrollingImage`, `AnimatedGradientBorder`
-- Extensions: `BuildContext`, `TextStyles`, `DateTime`, `Snackbar`
+- Add New Widgets:
+  - `CoderShakingIcon`, `CoderCircularShake`
+- Rename Widget: 
+  - `CoderAnimatedGradientBorder`, `CoderAutoScrollingImage`, `CoderBar`, `CoderButton`, `CoderCard`, `CoderContainer`, `CoderTextField`
