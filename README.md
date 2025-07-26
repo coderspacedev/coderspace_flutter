@@ -14,24 +14,6 @@ A Flutter package that includes a set of reusable custom widgets to speed up you
 - `CoderShakingIcon` - A reusable widget that applies a continuous shaking animation to any icon, SVG, or image asset. Fully customizable direction, speed, and size.
 - `CoderCircularShake` - A widget that applies a fast circular shaking animation to its child. Ideal for attention-grabbing UI elements like badges, buttons, icons, or alerts.
 
-## ✨ Animations Included
-
-- `BounceTapAnimation` – Adds a bounce effect when tapping any widget. Great for interactive buttons and icons. Fully configurable scale and duration.
-- `SlideFadeIn` – Smoothly slides and fades a widget into view from any direction. Ideal for onboarding steps, headers, or staggered lists.
-- `StaggeredListItem` – A list item animation that slides and fades in based on its index. Perfect for ListView.builder or GridView.builder with cascading effects.
-- `ShimmerPlaceholder` – Displays a shimmering skeleton loader with customizable colors, size, and border radius. Useful for loading states.
-- `TypewriterText` – A typewriter-style text animation that types out letters one by one, with optional cursor, looping, and delay.
-- `PulseEffect` – A continuous scaling pulse effect to draw attention to widgets like FABs, icons, or notifications. Configurable scale range and speed.
-- `RevealAnimation` – A scale-based reveal effect to animate widgets into view with optional delay and curve control. Perfect for intros and highlights.
-- `FlipCardAnimation` – Flips between front and back content with a 3D rotation animation. Supports horizontal or vertical flipping and tap-to-flip behavior.
-
-## ✨ Extensions Included
-
-- `showSnackBar()` – Show themed SnackBars easily via context.showSnackBar(), with support for types, icons, durations, and titles.
-- `ContextExtensions` – Quickly access screen size, safe area insets, orientation, and theme mode using context.
-- `AppStyles` – Get responsive text styles and scaling directly from context for spacing, buttons, and typography.
-- `DateTimeExtensions` – Format dates and generate "time ago" strings like "2 hours ago" with simple .formattedDate and .timeAgo.
-
 ## 📦 Installation
 
 Add this to your `pubspec.yaml`:
@@ -42,8 +24,6 @@ dependencies:
 ```
 
 ## 📖 Usage
-
-### Widgets
 
 #### 🧱 CoderBar - AppBar
 A customizable AppBar widget to streamline your screen headers with built-in support for back navigation, styling, and layout control.
@@ -59,10 +39,10 @@ CoderBar(
   titleSpacing: 16, // Spacing between title and leading icon
   titleStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w600), // Custom style for title
   actions: [ // Optional trailing widgets (e.g., icons)
-  IconButton(
-  icon: Icon(Icons.more_vert),
-  onPressed: () {},
-  ),
+    IconButton(
+      icon: Icon(Icons.more_vert),
+      onPressed: () {},
+    ),
   ],
   isBack: true, // Whether to show the back button
   centerTitle: true, // Center-align the title text
@@ -70,9 +50,9 @@ CoderBar(
   forceMaterialTransparency: true, // Enables Material3-style transparency
   automaticallyImplyLeading: false, // If true, Flutter auto-adds back button based on route
   bottom: PreferredSize( // Optional widget below the AppBar (e.g., TabBar)
-  preferredSize: Size.fromHeight(48),
-  child: TabBar(tabs: [...]),
-),
+    preferredSize: Size.fromHeight(48),
+    child: TabBar(tabs: [...]),
+  ),
 )
 ```
 
@@ -82,7 +62,7 @@ A customizable button with built-in loading state, icon support, and full stylin
 CoderButton(
   text: 'Submit', // ✅ Required: Button text label
   onPressed: () {
-  // ✅ Required: Tap handler
+    // ✅ Required: Tap handler
   },
   backgroundColor: Colors.blue, // Optional: Background color of the button
   textColor: Colors.white, // Optional: Color of the button text
@@ -107,7 +87,7 @@ CoderCard(
   subtitle: 'Optional subtitle text', // Optional: Smaller text under the title
   trailing: Icon(Icons.chevron_right), // Optional: Widget at the end (e.g., arrow icon)
   onTap: () {
-  // Optional: Tap callback
+    // Optional: Tap callback
   },
   backgroundColor: Colors.white, // Optional: Background color of the card
   padding: EdgeInsets.all(16), // Optional: Inner padding of the card (default is 16)
@@ -206,84 +186,6 @@ CoderCircularShake(
 )
 ```
 
-### Animated
-
-#### 👆 BounceTap – Bounce Effect on Tap
-Adds a bounce scale effect when a widget is tapped. Ideal for interactive buttons and icons.
-```dart
-BounceTap(
-  child: Icon(Icons.favorite),    // ✅ Required: Widget to animate
-  scale: 0.9,                     // Optional: Scale factor (default: 0.9)
-  duration: Duration(milliseconds: 150), // Optional: Duration of bounce
-  onTap: () => print("Tapped!"),  // Optional: Callback on tap
-)
-```
-
-#### 🎞️ SlideFadeIn – Slide + Fade Entry
-Slides and fades in a widget from a specified direction. Perfect for onboarding, banners, or entrance effects.
-```dart
-SlideFadeIn(
-  child: Text("Welcome!"),                  // ✅ Required
-  beginOffset: Offset(0, 0.2),              // Optional: Slide from bottom
-  duration: Duration(milliseconds: 500),    // Optional: Duration
-  delay: Duration(milliseconds: 300),       // Optional: Delay before start
-)
-```
-
-#### ✨ ShimmerPlaceholder – Skeleton Loading
-Displays a shimmer loading effect for placeholder UI.
-```dart
-ShimmerPlaceholder(
-  width: double.infinity,              // ✅ Optional: Width of shimmer box
-  height: 20,                          // ✅ Optional: Height of shimmer box
-  borderRadius: BorderRadius.circular(8), // Optional
-)
-```
-
-#### ⌨️ TypewriterText – Typewriter Effect
-Displays text one character at a time, like a typing effect.
-```dart
-TypewriterText(
-  text: "Loading data...",             // ✅ Required: Full text
-  characterDelay: Duration(milliseconds: 50), // Optional
-  cursor: "|",                         // Optional: Blinking cursor
-  loop: false,                         // Optional: Should loop
-)
-```
-
-#### 💓 PulseEffect – Attention Pulse
-Applies a continuous scale-up/scale-down pulse effect to draw attention.
-```dart
-PulseEffect(
-  child: Icon(Icons.mic),                 // ✅ Required: Widget to pulse
-  minScale: 0.95, maxScale: 1.05,         // Optional: Scale range
-  duration: Duration(milliseconds: 800),  // Optional: Pulse duration
-)
-```
-
-#### 🪄 RevealAnimation – Scale Reveal
-Reveals a widget by scaling it from 0 to 1.
-```dart
-RevealAnimation(
-  child: Text("Revealed!"),              // ✅ Required
-  duration: Duration(milliseconds: 600), // Optional: Animation duration
-  delay: Duration(milliseconds: 300),    // Optional: Delay before starting
-)
-```
-
-#### 🃏 FlipCard – Flip Between Front & Back
-Flips a card between two sides with a 3D animation.
-```dart
-FlipCard(
-  front: Card(child: Text('Front')),     // ✅ Required: Front side
-  back: Card(child: Text('Back')),       // ✅ Required: Back side
-  flipHorizontal: true,                  // Optional: Flip horizontally or vertically
-  autoFlip: true,                        // Optional: Tap to flip
-)
-```
-
-### Extensions
-
 #### 🧱 SnackBar
 This extension adds a showSnackBar() method to BuildContext, allowing you to show consistent, themed SnackBars with just one line.
 ```dart
@@ -356,9 +258,8 @@ final ago = yesterday.timeAgo;
 
 ### 🚀 About Me
 
-👨‍💻 Senior Flutter Developer <br />
-💡 One principle I always code by: <br />
-*"Don’t just develop — Develop Innovative"*
+I'm a Senior Flutter Developer <br />
+Please remember one thing in developing: *"Develop Innovative"*
 
 ### 📝 Author Profile
 
