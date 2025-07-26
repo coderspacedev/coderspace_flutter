@@ -111,7 +111,7 @@ class CoderBar extends StatelessWidget implements PreferredSizeWidget {
                 left: isBack ? context.scale(4) : context.scale(16),
               ),
               child: Text(
-                title!,
+                title ?? '',
                 style:
                     titleStyle ??
                     context.headline5.copyWith(

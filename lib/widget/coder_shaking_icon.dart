@@ -120,7 +120,7 @@ class _CoderShakingIconState extends State<CoderShakingIcon>
   Widget _buildChild() {
     if (widget.svgAssetPath != null) {
       return SvgPicture.asset(
-        widget.svgAssetPath!,
+        widget.svgAssetPath ?? '',
         width: widget.size,
         height: widget.size,
         colorFilter: widget.color != null
@@ -129,7 +129,7 @@ class _CoderShakingIconState extends State<CoderShakingIcon>
       );
     } else if (widget.imageAssetPath != null) {
       return Image.asset(
-        widget.imageAssetPath!,
+        widget.imageAssetPath ?? '',
         width: widget.size,
         height: widget.size,
         color: widget.color,

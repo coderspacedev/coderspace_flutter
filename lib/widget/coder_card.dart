@@ -95,9 +95,9 @@ class CoderCard extends StatelessWidget {
                     if (subtitle != null) ...[
                       const SizedBox(height: 4),
                       Text(
-                        subtitle!,
+                        subtitle ?? '',
                         style: context.bodySmall.copyWith(
-                          color: subtitleColor ?? colorText.withOpacity(0.7),
+                          color: subtitleColor ?? colorText.withAlpha(150),
                         ),
                       ),
                     ],

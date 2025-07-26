@@ -114,7 +114,7 @@ class CoderButton extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   if (icon != null) ...[
-                    icon!,
+                    ?icon,
                     SizedBox(width: context.scale(8)),
                   ],
                   Flexible(
