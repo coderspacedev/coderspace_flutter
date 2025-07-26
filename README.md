@@ -18,7 +18,7 @@ Add this to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  coderspace: ^1.0.0
+  coderspace: ^latest_version
 ```
 
 ## 📖 Usage
