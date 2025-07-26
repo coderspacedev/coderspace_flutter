@@ -4,13 +4,15 @@ A Flutter package that includes a set of reusable custom widgets to speed up you
 
 ## ✨ Widgets Included
 
-- `GlowingBorder` – A customizable animated border for glowing effects.
-- `AppAppBar` – Simplified AppBar with style and configuration options.
-- `AppButton` – A modern, styled button with built-in customization.
-- `AppCard` – Pre-styled card widget to wrap your content.
-- `AppContainer` – A ready-to-use container with customizable styling.
-- `AppTextField` – A styled text field with configurable parameters.
-- `AutoScrollingImage` – An auto-scrolling image list (horizontal or vertical).
+- `CoderBar` – Simplified AppBar with style and configuration options.
+- `CoderButton` – A modern, styled button with built-in customization.
+- `CoderCard` – Pre-styled card widget to wrap your content.
+- `CoderContainer` – A ready-to-use container with customizable styling.
+- `CoderTextField` – A styled text field with configurable parameters.
+- `CoderAutoScrollingImage` – An auto-scrolling image list (horizontal or vertical).
+- `CoderAnimatedGradientBorder` - A glowing, animated gradient border that wraps any widget with smooth rotation, optional blur, and axis stretching.
+- `CoderShakingIcon` - A reusable widget that applies a continuous shaking animation to any icon, SVG, or image asset. Fully customizable direction, speed, and size.
+- `CoderCircularShake` - A widget that applies a fast circular shaking animation to its child. Ideal for attention-grabbing UI elements like badges, buttons, icons, or alerts.
 
 ## 📦 Installation
 
