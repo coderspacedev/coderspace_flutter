@@ -175,4 +175,3 @@ class AnimatedGradientState extends State<CoderAnimatedGradientBorder>
     );
   }
 }
-

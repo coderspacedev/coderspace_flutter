@@ -20,12 +20,12 @@ extension SnackBarExtension on BuildContext {
   /// - [title]: Optional title to show above the message.
   /// - [icon]: Optional icon to override the default icon for each type.
   void showSnackBar(
-      String message, {
-        SnackBarType type = SnackBarType.info,
-        Duration duration = const Duration(seconds: 3),
-        String? title,
-        IconData? icon,
-      }) {
+    String message, {
+    SnackBarType type = SnackBarType.info,
+    Duration duration = const Duration(seconds: 3),
+    String? title,
+    IconData? icon,
+  }) {
     // Set background color and default icon based on type
     Color backgroundColor;
     IconData defaultIcon;
@@ -72,10 +72,7 @@ extension SnackBarExtension on BuildContext {
                       title,
                       style: bodyBoldLarge.copyWith(color: Colors.white),
                     ),
-                  Text(
-                    message,
-                    style: caption.copyWith(color: Colors.white),
-                  ),
+                  Text(message, style: caption.copyWith(color: Colors.white)),
                 ],
               ),
             ),

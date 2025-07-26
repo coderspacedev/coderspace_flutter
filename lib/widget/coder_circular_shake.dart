@@ -30,7 +30,9 @@ class CoderCircularShake extends StatefulWidget {
   const CoderCircularShake({
     super.key,
     required this.child, // ✅ Required: Widget to shake
-    this.duration = const Duration(milliseconds: 700), // Optional: How long the shaking lasts
+    this.duration = const Duration(
+      milliseconds: 700,
+    ), // Optional: How long the shaking lasts
   });
 
   @override
@@ -93,4 +95,3 @@ class _CoderCircularShakeState extends State<CoderCircularShake>
     );
   }
 }
-

@@ -82,7 +82,7 @@ class _CoderAutoScrollingImageState extends State<CoderAutoScrollingImage> {
     // Generate repeated image widgets.
     final children = List.generate(
       widget.repetitionCount,
-          (_) => Image.asset(
+      (_) => Image.asset(
         widget.assetPath,
         fit: widget.fit,
         width: widget.axis == ScrollAxis.vertical
@@ -106,4 +106,3 @@ class _CoderAutoScrollingImageState extends State<CoderAutoScrollingImage> {
     );
   }
 }
-

@@ -30,4 +30,3 @@ extension DateTimeExtensions on DateTime {
     return formattedDate;
   }
 }
-

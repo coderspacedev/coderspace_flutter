@@ -1,8 +1,8 @@
-export 'extensions/app_colors.dart';
-export 'extensions/app_context.dart';
-export 'extensions/app_snackbar.dart';
-export 'extensions/app_styles.dart';
-export 'extensions/date_extension.dart';
+export 'extensions/coder_colors.dart';
+export 'extensions/coder_context.dart';
+export 'extensions/coder_snackbar.dart';
+export 'extensions/coder_styles.dart';
+export 'extensions/coder_date.dart';
 export 'widget/glowing_border/coder_animated_gradient_container.dart';
 export 'widget/glowing_border/coder_glowing_borders.dart';
 export 'widget/coder_bar.dart';

@@ -78,7 +78,8 @@ class CoderTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(context.scale(12)),
           borderSide: BorderSide.none,
         ),
-        contentPadding: contentPadding ??
+        contentPadding:
+            contentPadding ??
             EdgeInsets.symmetric(
               horizontal: context.scale(16),
               vertical: context.scale(14),
@@ -87,4 +88,3 @@ class CoderTextField extends StatelessWidget {
     );
   }
 }
-

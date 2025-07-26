@@ -82,9 +82,16 @@ class CoderButton extends StatelessWidget {
         style:
             ElevatedButton.styleFrom(
               backgroundColor: backgroundColor ?? colorAccent,
-              shape: RoundedRectangleBorder(borderRadius: borderRadius ?? BorderRadius.circular(radius ?? context.scale(12))),
+              shape: RoundedRectangleBorder(
+                borderRadius:
+                    borderRadius ??
+                    BorderRadius.circular(radius ?? context.scale(12)),
+              ),
               elevation: 0,
-              padding: EdgeInsets.symmetric(horizontal: paddingH ?? 0, vertical: paddingV ?? 0),
+              padding: EdgeInsets.symmetric(
+                horizontal: paddingH ?? 0,
+                vertical: paddingV ?? 0,
+              ),
             ).copyWith(
               overlayColor: WidgetStateProperty.all(Colors.transparent),
               shadowColor: WidgetStateProperty.all(Colors.transparent),
@@ -97,19 +104,28 @@ class CoderButton extends StatelessWidget {
                 height: context.scale(20),
                 child: CircularProgressIndicator(
                   strokeWidth: context.scale(2),
-                  valueColor: AlwaysStoppedAnimation<Color>(textColor ?? colorAccentText),
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    textColor ?? colorAccentText,
+                  ),
                 ),
               )
             : Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  if (icon != null) ...[icon!, SizedBox(width: context.scale(8))],
+                  if (icon != null) ...[
+                    icon!,
+                    SizedBox(width: context.scale(8)),
+                  ],
                   Flexible(
                     child: Text(
                       text,
                       overflow: TextOverflow.ellipsis,
-                      style: style ?? context.button.copyWith(color: textColor ?? colorAccentText),
+                      style:
+                          style ??
+                          context.button.copyWith(
+                            color: textColor ?? colorAccentText,
+                          ),
                     ),
                   ),
                 ],

@@ -27,11 +27,11 @@ extension AppStyles on BuildContext {
   /// [lineHeight]: height of line spacing.
   /// [color]: text color (defaults to [colorText]).
   TextStyle baseTextStyle(
-      double fontSize, {
-        FontWeight fontWeight = FontWeight.normal,
-        double lineHeight = 1.2,
-        Color? color,
-      }) {
+    double fontSize, {
+    FontWeight fontWeight = FontWeight.normal,
+    double lineHeight = 1.2,
+    Color? color,
+  }) {
     return GoogleFonts.poppins(
       fontSize: scale(fontSize),
       fontWeight: fontWeight,
@@ -55,12 +55,10 @@ extension AppStyles on BuildContext {
       baseTextStyle(28, fontWeight: FontWeight.bold, lineHeight: 1.25);
 
   /// Sub-heading style (scaled 24px).
-  TextStyle get headline4 =>
-      baseTextStyle(24, fontWeight: FontWeight.w600);
+  TextStyle get headline4 => baseTextStyle(24, fontWeight: FontWeight.w600);
 
   /// Minor heading or section title (scaled 20px).
-  TextStyle get headline5 =>
-      baseTextStyle(20, fontWeight: FontWeight.w600);
+  TextStyle get headline5 => baseTextStyle(20, fontWeight: FontWeight.w600);
 
   // ───────────────────── Body Styles ─────────────────────
 
@@ -79,8 +77,7 @@ extension AppStyles on BuildContext {
   TextStyle get bodyLarge => baseTextStyle(16);
 
   /// Bold large body text (scaled 16px).
-  TextStyle get bodyBoldLarge =>
-      baseTextStyle(16, fontWeight: FontWeight.w600);
+  TextStyle get bodyBoldLarge => baseTextStyle(16, fontWeight: FontWeight.w600);
 
   /// Medium large body text (scaled 16px).
   TextStyle get bodyMediumLarge =>
@@ -94,22 +91,18 @@ extension AppStyles on BuildContext {
       baseTextStyle(14, fontWeight: FontWeight.w600);
 
   /// Small body text (scaled 12px).
-  TextStyle get bodySmall =>
-      baseTextStyle(12, lineHeight: 1.1);
+  TextStyle get bodySmall => baseTextStyle(12, lineHeight: 1.1);
 
   /// Bold small body text (scaled 12px).
-  TextStyle get bodyBoldSmall =>
-      baseTextStyle(12, fontWeight: FontWeight.w600);
+  TextStyle get bodyBoldSmall => baseTextStyle(12, fontWeight: FontWeight.w600);
 
   /// Caption or hint text (scaled 10px).
-  TextStyle get caption =>
-      baseTextStyle(10, lineHeight: 1.1);
+  TextStyle get caption => baseTextStyle(10, lineHeight: 1.1);
 
   // ───────────────────── Button Styles ─────────────────────
 
   /// Default button text style (scaled 18px, bold).
-  TextStyle get button =>
-      baseTextStyle(18, fontWeight: FontWeight.w600);
+  TextStyle get button => baseTextStyle(18, fontWeight: FontWeight.w600);
 
   /// Accent-colored button style (scaled 18px, bold).
   TextStyle get accentButton =>

@@ -69,10 +69,7 @@ class CoderCard extends StatelessWidget {
           padding: padding,
           child: Row(
             children: [
-              if (leading != null) ...[
-                leading!,
-                const SizedBox(width: 12),
-              ],
+              if (leading != null) ...[leading!, const SizedBox(width: 12)],
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,10 +82,7 @@ class CoderCard extends StatelessWidget {
                     ),
                     if (subtitle != null) ...[
                       const SizedBox(height: 4),
-                      Text(
-                        subtitle!,
-                        style: context.bodySmall,
-                      ),
+                      Text(subtitle!, style: context.bodySmall),
                     ],
                     if (showDivider) ...[
                       const SizedBox(height: 12),
@@ -97,10 +91,7 @@ class CoderCard extends StatelessWidget {
                   ],
                 ),
               ),
-              if (trailing != null) ...[
-                const SizedBox(width: 12),
-                trailing!,
-              ],
+              if (trailing != null) ...[const SizedBox(width: 12), trailing!],
             ],
           ),
         ),
@@ -108,4 +99,3 @@ class CoderCard extends StatelessWidget {
     );
   }
 }
-

@@ -28,8 +28,8 @@ extension ContextExtension on BuildContext {
   /// Helpful for layout calculations inside safe areas.
   double get screenHeightWithoutSystemBars =>
       MediaQuery.of(this).size.height -
-          MediaQuery.of(this).padding.top -
-          MediaQuery.of(this).padding.bottom;
+      MediaQuery.of(this).padding.top -
+      MediaQuery.of(this).padding.bottom;
 
   /// Returns `true` if the device is currently in portrait orientation.
   bool get isPortrait =>
@@ -45,4 +45,3 @@ extension ContextExtension on BuildContext {
   /// Returns `true` if the current theme is dark mode.
   bool get isDarkMode => Theme.of(this).brightness == Brightness.dark;
 }
-

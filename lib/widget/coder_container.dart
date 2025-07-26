@@ -64,7 +64,8 @@ class CoderContainer extends StatelessWidget {
       height: height,
       margin: margin,
       padding: padding,
-      decoration: decoration ??
+      decoration:
+          decoration ??
           BoxDecoration(
             color: color ?? colorCard,
             borderRadius: BorderRadius.circular(radius ?? context.scale(12)),
@@ -73,4 +74,3 @@ class CoderContainer extends StatelessWidget {
     );
   }
 }
-
