@@ -310,6 +310,31 @@ final isPortrait = context.isPortrait;                   // Device is in portrai
 final isLandscape = context.isLandscape;                 // Device is in landscape?
 ```
 
+#### ✅ Quick Usage - NavigatorExtension
+This extension adds easy-to-use navigation helpers to BuildContext, simplifying route transitions across your Flutter app:
+```dart
+// Push a new screen
+context.push(SecondScreen());
+
+// Replace current screen
+context.pushReplacement(HomeScreen());
+
+// Push and clear all previous screens
+context.pushAndRemoveAll(LoginScreen());
+
+// Pop the current screen
+context.pop();
+
+// Pop with a result
+context.pop('resultValue');
+
+// Pop until a condition is met
+context.popUntil((route) => route.isFirst);
+
+// Check if back navigation is possible
+final canGoBack = context.canPop();
+```
+
 #### 🎯 Quick Usage – AppStyles
 Use responsive TextStyles and size scaling across your app with context.
 ```dart
