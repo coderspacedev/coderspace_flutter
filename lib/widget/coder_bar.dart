@@ -43,7 +43,7 @@ class CoderBar extends StatelessWidget implements PreferredSizeWidget {
   /// Optional list of widgets displayed in the trailing action area.
   final List<Widget>? actions;
 
-  /// Whether to show the back button. Defaults to `true`.
+  /// Whether to show the back button. Defaults to `false`.
   final bool isBack;
 
   /// Whether to center the title. Defaults to `false`.
@@ -52,7 +52,7 @@ class CoderBar extends StatelessWidget implements PreferredSizeWidget {
   /// Callback triggered when back button is tapped. Defaults to `Navigator.pop()`.
   final VoidCallback? onBack;
 
-  /// Whether to apply transparent background when scrolling. Defaults to `true`.
+  /// Whether to apply transparent background when scrolling. Defaults to `false`.
   final bool forceMaterialTransparency;
 
   /// If true, Flutter auto adds a back button when there's a Navigator ancestor.
@@ -74,10 +74,10 @@ class CoderBar extends StatelessWidget implements PreferredSizeWidget {
     this.titleSpacing,
     this.titleStyle,
     this.actions,
-    this.isBack = true,
+    this.isBack = false,
     this.centerTitle = false,
     this.onBack,
-    this.forceMaterialTransparency = true,
+    this.forceMaterialTransparency = false,
     this.automaticallyImplyLeading = false,
     this.bottom,
   });
@@ -95,11 +95,7 @@ class CoderBar extends StatelessWidget implements PreferredSizeWidget {
       leading: isBack
           ? IconButton(
               onPressed: onBack ?? () => Navigator.of(context).pop(),
-              icon: Icon(
-                icon ?? Icons.arrow_back_rounded,
-                size: context.scale(24),
-                color: iconColor ?? colorText,
-              ),
+              icon: Icon(icon ?? Icons.arrow_back_rounded, size: context.scale(24), color: iconColor ?? colorText),
               padding: EdgeInsets.zero,
               splashColor: Colors.transparent,
               highlightColor: Colors.transparent,
@@ -108,16 +104,15 @@ class CoderBar extends StatelessWidget implements PreferredSizeWidget {
       title: title != null
           ? Padding(
               padding: EdgeInsets.only(
-                left: isBack ? context.scale(4) : context.scale(16),
+                left: isBack
+                    ? context.scale(4)
+                    : centerTitle
+                    ? context.scale(0)
+                    : context.scale(16),
               ),
               child: Text(
                 title ?? '',
-                style:
-                    titleStyle ??
-                    context.headline5.copyWith(
-                      color: textColor ?? colorText,
-                      fontWeight: FontWeight.w600,
-                    ),
+                style: titleStyle ?? context.headline5.copyWith(color: textColor ?? colorText, fontWeight: FontWeight.w600),
               ),
             )
           : const SizedBox.shrink(),
@@ -130,20 +125,11 @@ class CoderBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize {
     final shortestSide =
-        WidgetsBinding
-            .instance
-            .platformDispatcher
-            .views
-            .first
-            .physicalSize
-            .shortestSide /
+        WidgetsBinding.instance.platformDispatcher.views.first.physicalSize.shortestSide /
         WidgetsBinding.instance.platformDispatcher.views.first.devicePixelRatio;
 
-    final defaultToolbarHeight =
-        toolbarHeight ?? (shortestSide > 600 ? 100.0 : 56.0);
+    final defaultToolbarHeight = toolbarHeight ?? (shortestSide > 600 ? 100.0 : 56.0);
 
-    return Size.fromHeight(
-      defaultToolbarHeight + (bottom?.preferredSize.height ?? 0),
-    );
+    return Size.fromHeight(defaultToolbarHeight + (bottom?.preferredSize.height ?? 0));
   }
 }
