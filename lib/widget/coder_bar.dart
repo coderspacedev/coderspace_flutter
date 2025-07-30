@@ -95,7 +95,11 @@ class CoderBar extends StatelessWidget implements PreferredSizeWidget {
       leading: isBack
           ? IconButton(
               onPressed: onBack ?? () => Navigator.of(context).pop(),
-              icon: Icon(icon ?? Icons.arrow_back_rounded, size: context.scale(24), color: iconColor ?? colorText),
+              icon: Icon(
+                icon ?? Icons.arrow_back_rounded,
+                size: context.scale(24),
+                color: iconColor ?? colorText,
+              ),
               padding: EdgeInsets.zero,
               splashColor: Colors.transparent,
               highlightColor: Colors.transparent,
@@ -112,7 +116,12 @@ class CoderBar extends StatelessWidget implements PreferredSizeWidget {
               ),
               child: Text(
                 title ?? '',
-                style: titleStyle ?? context.headline5.copyWith(color: textColor ?? colorText, fontWeight: FontWeight.w600),
+                style:
+                    titleStyle ??
+                    context.headline5.copyWith(
+                      color: textColor ?? colorText,
+                      fontWeight: FontWeight.w600,
+                    ),
               ),
             )
           : const SizedBox.shrink(),
@@ -125,11 +134,20 @@ class CoderBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize {
     final shortestSide =
-        WidgetsBinding.instance.platformDispatcher.views.first.physicalSize.shortestSide /
+        WidgetsBinding
+            .instance
+            .platformDispatcher
+            .views
+            .first
+            .physicalSize
+            .shortestSide /
         WidgetsBinding.instance.platformDispatcher.views.first.devicePixelRatio;
 
-    final defaultToolbarHeight = toolbarHeight ?? (shortestSide > 600 ? 100.0 : 56.0);
+    final defaultToolbarHeight =
+        toolbarHeight ?? (shortestSide > 600 ? 100.0 : 56.0);
 
-    return Size.fromHeight(defaultToolbarHeight + (bottom?.preferredSize.height ?? 0));
+    return Size.fromHeight(
+      defaultToolbarHeight + (bottom?.preferredSize.height ?? 0),
+    );
   }
 }
