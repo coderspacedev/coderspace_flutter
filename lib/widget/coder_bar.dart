@@ -43,7 +43,7 @@ class CoderBar extends StatelessWidget implements PreferredSizeWidget {
   /// Optional list of widgets displayed in the trailing action area.
   final List<Widget>? actions;
 
-  /// Whether to show the back button. Defaults to `true`.
+  /// Whether to show the back button. Defaults to `false`.
   final bool isBack;
 
   /// Whether to center the title. Defaults to `false`.
@@ -52,7 +52,7 @@ class CoderBar extends StatelessWidget implements PreferredSizeWidget {
   /// Callback triggered when back button is tapped. Defaults to `Navigator.pop()`.
   final VoidCallback? onBack;
 
-  /// Whether to apply transparent background when scrolling. Defaults to `true`.
+  /// Whether to apply transparent background when scrolling. Defaults to `false`.
   final bool forceMaterialTransparency;
 
   /// If true, Flutter auto adds a back button when there's a Navigator ancestor.
@@ -74,10 +74,10 @@ class CoderBar extends StatelessWidget implements PreferredSizeWidget {
     this.titleSpacing,
     this.titleStyle,
     this.actions,
-    this.isBack = true,
+    this.isBack = false,
     this.centerTitle = false,
     this.onBack,
-    this.forceMaterialTransparency = true,
+    this.forceMaterialTransparency = false,
     this.automaticallyImplyLeading = false,
     this.bottom,
   });
@@ -108,7 +108,11 @@ class CoderBar extends StatelessWidget implements PreferredSizeWidget {
       title: title != null
           ? Padding(
               padding: EdgeInsets.only(
-                left: isBack ? context.scale(4) : context.scale(16),
+                left: isBack
+                    ? context.scale(4)
+                    : centerTitle
+                    ? context.scale(0)
+                    : context.scale(16),
               ),
               child: Text(
                 title ?? '',
