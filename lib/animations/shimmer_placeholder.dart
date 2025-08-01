@@ -53,7 +53,7 @@ class _ShimmerPlaceholderState extends State<ShimmerPlaceholder>
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _controller,
-      builder: (_, __) {
+      builder: (_, _) {
         return ShaderMask(
           shaderCallback: (bounds) {
             final shimmerWidth = bounds.width * 1.5;

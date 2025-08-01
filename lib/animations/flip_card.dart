@@ -70,7 +70,7 @@ class _FlipCardState extends State<FlipCard>
       ignoring: isFront ? !_isFront : _isFront,
       child: AnimatedBuilder(
         animation: _controller,
-        builder: (_, __) {
+        builder: (_, _) {
           double angle = _controller.value * 3.1416; // π = 180°
           if (!isFront) angle += 3.1416;
 
