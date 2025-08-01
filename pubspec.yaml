@@ -1,6 +1,6 @@
 name: coderspace
 description: "A Flutter package by CoderSpace with reusable widgets like app bars, buttons, text fields, containers, and animated borders."
-version: 1.0.12
+version: 1.0.11
 homepage: https://github.com/coderspacedev
 repository: https://github.com/coderspacedev/coderspace_flutter
 issue_tracker: https://github.com/coderspacedev/coderspace_flutter/issues
