@@ -3,12 +3,41 @@ name: Publish to pub.dev
 on:
   push:
     tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+*'
+      - 'v[0-9]+.[0-9]+.[0-9]+' # Triggers on tags like v1.2.3
 
 jobs:
   publish:
     permissions:
-      id-token: write # Required for authentication using OIDC
-    uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
-    with:
-      environment: 'pub.dev'
+      id-token: write # Required for OIDC authentication with pub.dev
+    runs-on: ubuntu-latest
+    environment: pub.dev # Matches the environment set on pub.dev
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.22.2' # Specify your desired Flutter version
+          channel: 'stable'
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze code
+        run: flutter analyze
+
+      - name: Run tests
+        run: flutter test
+
+      - name: Check publish warnings
+        run: dart pub publish --dry-run
+
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          environment: pub.dev # Matches the environment set on pub.dev
+
+      - name: Publish package
+        run: dart pub publish --force
