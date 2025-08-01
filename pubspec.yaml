@@ -5,7 +5,6 @@ homepage: https://github.com/coderspacedev
 repository: https://github.com/coderspacedev/coderspace_flutter
 issue_tracker: https://github.com/coderspacedev/coderspace_flutter/issues
 documentation: https://github.com/coderspacedev/coderspace_flutter#readme
-publish_to: 'https://pub.dev'
 
 environment:
   sdk: ^3.8.1
