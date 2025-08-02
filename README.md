@@ -2,6 +2,13 @@
 
 A Flutter package that includes a set of reusable custom widgets to speed up your app development process with beautiful and consistent UI components.
 
+## ✨ Other Useful Packages
+
+Looking for more tools to speed up your Flutter development? Check out these packages:
+
+1. [coderspace_network](https://pub.dev/packages/coderspace_network) – coderspace_network is a lightweight, developer-friendly Flutter package for making REST API calls using Dio. It provides clean, generic request handling, consistent error management, and simple utilities like auto-list parsing—all with minimal code.
+2. [coderx](https://pub.dev/packages/coderx) – A lightweight and reactive state management system for Flutter. Easily manage global or local state, handle async states, computed values, and react to changes with builders, consumers, listeners, and observers — all with simple Dart classes.
+
 ## ✨ Widgets Included
 
 - `CoderBar` – Simplified AppBar with style and configuration options.
