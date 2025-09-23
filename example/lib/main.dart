@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 void main() {
   AppTheme.useLight();
+
   runApp(const SampleApp());
 }
 
