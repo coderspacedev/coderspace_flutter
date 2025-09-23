@@ -1,7 +1,10 @@
 import 'package:coderspace/coderspace.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(const SampleApp());
+void main() {
+  AppTheme.useLight();
+  runApp(const SampleApp());
+}
 
 class SampleApp extends StatelessWidget {
   const SampleApp({super.key});
@@ -23,10 +26,10 @@ class _ExampleState extends State<Example> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: colorBackground,
+      backgroundColor: AppTheme.colors.background,
       appBar: CoderBar(
         title: 'coderspace',
-        backgroundColor: colorAccent,
+        backgroundColor: AppTheme.colors.accent,
         isBack: false,
         forceMaterialTransparency: false,
       ),
@@ -51,7 +54,7 @@ class _ExampleState extends State<Example> {
             SizedBox(height: context.scale(16)),
             CoderContainer(
               padding: EdgeInsets.all(context.scale(16)),
-              color: colorCard,
+              color: AppTheme.colors.card,
               child: Text("CoderContainer", style: context.bodyLarge),
             ),
             SizedBox(height: context.scale(16)),

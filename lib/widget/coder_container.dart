@@ -67,7 +67,7 @@ class CoderContainer extends StatelessWidget {
       decoration:
           decoration ??
           BoxDecoration(
-            color: color ?? colorCard,
+            color: color ?? AppTheme.colors.card,
             borderRadius: BorderRadius.circular(radius ?? context.scale(12)),
           ),
       child: child,

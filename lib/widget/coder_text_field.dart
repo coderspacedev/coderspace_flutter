@@ -67,13 +67,15 @@ class CoderTextField extends StatelessWidget {
       inputFormatters: inputFormatters,
       decoration: InputDecoration(
         prefixIcon: prefixIcon != null
-            ? Icon(prefixIcon, color: colorText)
+            ? Icon(prefixIcon, color: AppTheme.colors.text)
             : null,
         suffixIcon: suffixIcon,
         hintText: hint,
-        hintStyle: context.bodyLarge.copyWith(color: colorText.withAlpha(100)),
+        hintStyle: context.bodyLarge.copyWith(
+          color: AppTheme.colors.text.withAlpha(100),
+        ),
         filled: true,
-        fillColor: colorCard,
+        fillColor: AppTheme.colors.card,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(context.scale(12)),
           borderSide: BorderSide.none,

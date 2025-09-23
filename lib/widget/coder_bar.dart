@@ -87,7 +87,7 @@ class CoderBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       elevation: elevation ?? 0,
       centerTitle: centerTitle,
-      backgroundColor: backgroundColor ?? colorBackground,
+      backgroundColor: backgroundColor ?? AppTheme.colors.background,
       automaticallyImplyLeading: automaticallyImplyLeading,
       forceMaterialTransparency: forceMaterialTransparency,
       titleSpacing: titleSpacing ?? 0,
@@ -98,7 +98,7 @@ class CoderBar extends StatelessWidget implements PreferredSizeWidget {
               icon: Icon(
                 icon ?? Icons.arrow_back_rounded,
                 size: context.scale(24),
-                color: iconColor ?? colorText,
+                color: iconColor ?? AppTheme.colors.text,
               ),
               padding: EdgeInsets.zero,
               splashColor: Colors.transparent,
@@ -119,7 +119,7 @@ class CoderBar extends StatelessWidget implements PreferredSizeWidget {
                 style:
                     titleStyle ??
                     context.headline5.copyWith(
-                      color: textColor ?? colorText,
+                      color: textColor ?? AppTheme.colors.text,
                       fontWeight: FontWeight.w600,
                     ),
               ),

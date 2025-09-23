@@ -36,7 +36,7 @@ extension AppStyles on BuildContext {
       fontSize: scale(fontSize),
       fontWeight: fontWeight,
       height: lineHeight,
-      color: color ?? colorText,
+      color: color ?? AppTheme.colors.text,
     );
   }
 
@@ -105,6 +105,9 @@ extension AppStyles on BuildContext {
   TextStyle get button => baseTextStyle(18, fontWeight: FontWeight.w600);
 
   /// Accent-colored button style (scaled 18px, bold).
-  TextStyle get accentButton =>
-      baseTextStyle(18, fontWeight: FontWeight.w600, color: colorAccentText);
+  TextStyle get accentButton => baseTextStyle(
+    18,
+    fontWeight: FontWeight.w600,
+    color: AppTheme.colors.accentText,
+  );
 }

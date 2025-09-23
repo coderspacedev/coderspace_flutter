@@ -68,7 +68,7 @@ class CoderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: backgroundColor ?? colorCard,
+      color: backgroundColor ?? AppTheme.colors.card,
       borderRadius: BorderRadius.circular(borderRadius),
       child: InkWell(
         onTap: onTap,
@@ -88,7 +88,7 @@ class CoderCard extends StatelessWidget {
                     Text(
                       title,
                       style: context.bodyBoldLarge.copyWith(
-                        color: textColor ?? colorText,
+                        color: textColor ?? AppTheme.colors.cardText,
                       ),
                     ),
                     // Subtitle if present
@@ -97,7 +97,9 @@ class CoderCard extends StatelessWidget {
                       Text(
                         subtitle ?? '',
                         style: context.bodySmall.copyWith(
-                          color: subtitleColor ?? colorText.withAlpha(150),
+                          color:
+                              subtitleColor ??
+                              AppTheme.colors.cardText.withAlpha(150),
                         ),
                       ),
                     ],

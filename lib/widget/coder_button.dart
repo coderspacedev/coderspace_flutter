@@ -1,3 +1,5 @@
+import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
+
 import 'package:flutter/material.dart';
 import 'package:coderspace/coderspace.dart';
 
@@ -81,7 +83,7 @@ class CoderButton extends StatelessWidget {
       child: ElevatedButton(
         style:
             ElevatedButton.styleFrom(
-              backgroundColor: backgroundColor ?? colorAccent,
+              backgroundColor: backgroundColor ?? AppTheme.colors.accent,
               shape: RoundedRectangleBorder(
                 borderRadius:
                     borderRadius ??
@@ -97,7 +99,9 @@ class CoderButton extends StatelessWidget {
               shadowColor: WidgetStateProperty.all(Colors.transparent),
               splashFactory: NoSplash.splashFactory,
             ),
-        onPressed: isLoading ? null : onPressed,
+        onPressed: () {
+          if (!isLoading) onPressed.call();
+        },
         child: isLoading
             ? SizedBox(
                 width: context.scale(20),
@@ -105,7 +109,7 @@ class CoderButton extends StatelessWidget {
                 child: CircularProgressIndicator(
                   strokeWidth: context.scale(2),
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    textColor ?? colorAccentText,
+                    textColor ?? AppTheme.colors.accentText,
                   ),
                 ),
               )
@@ -124,7 +128,7 @@ class CoderButton extends StatelessWidget {
                       style:
                           style ??
                           context.button.copyWith(
-                            color: textColor ?? colorAccentText,
+                            color: textColor ?? AppTheme.colors.accent,
                           ),
                     ),
                   ),
