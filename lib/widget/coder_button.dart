@@ -1,5 +1,3 @@
-import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
-
 import 'package:flutter/material.dart';
 import 'package:coderspace/coderspace.dart';
 
@@ -100,7 +98,7 @@ class CoderButton extends StatelessWidget {
               splashFactory: NoSplash.splashFactory,
             ),
         onPressed: () {
-          if (!isLoading) onPressed.call();
+          if (!isLoading) onPressed?.call();
         },
         child: isLoading
             ? SizedBox(
