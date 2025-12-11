@@ -106,7 +106,7 @@ class CoderBar extends StatelessWidget implements PreferredSizeWidget {
         titleWidget ??
         (title != null
             ? Text(
-                title??'',
+                title ?? '',
                 style: context.headline5.copyWith(
                   color: textColor ?? AppTheme.colors.text,
                   fontWeight: FontWeight.w600,
@@ -129,5 +129,6 @@ class CoderBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight((height ?? 56) + (bottom?.preferredSize.height ?? 0));
+  Size get preferredSize =>
+      Size.fromHeight((height ?? 56) + (bottom?.preferredSize.height ?? 0));
 }

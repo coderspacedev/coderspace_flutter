@@ -1,5 +1,6 @@
-import 'package:coderspace/coderspace.dart';
 import 'package:flutter/material.dart';
+
+import 'coder_styles.dart';
 
 /// Extension on [num] to provide easy scaling utilities for responsive UI.
 extension NumScaleExtension on num {
@@ -35,4 +36,3 @@ extension NumScaleExtension on num {
   /// ```
   double sb(BuildContext context) => context.scaleBoth(toDouble());
 }
-

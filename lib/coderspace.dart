@@ -4,6 +4,7 @@ export 'extensions/coder_snackbar.dart';
 export 'extensions/coder_styles.dart';
 export 'extensions/coder_date.dart';
 export 'extensions/coder_navigation.dart';
+export 'extensions/coder_scale.dart';
 export 'widget/glowing_border/coder_animated_gradient_container.dart';
 export 'widget/glowing_border/coder_glowing_borders.dart';
 export 'widget/coder_bar.dart';

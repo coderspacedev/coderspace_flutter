@@ -55,9 +55,7 @@ extension SnackBarExtension on BuildContext {
         behavior: SnackBarBehavior.floating,
         backgroundColor: bg,
         margin: const EdgeInsets.all(16),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         content: Text(
           message,
           style: bodyMedium.copyWith(color: fg), // your custom style

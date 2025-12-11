@@ -18,7 +18,11 @@ class CodeAnnotatedRegion extends StatelessWidget {
   final StatusBarTheme theme;
 
   /// Creates a widget that sets system UI overlay styles for its [child].
-  const CodeAnnotatedRegion({super.key, required this.child, this.theme = StatusBarTheme.light});
+  const CodeAnnotatedRegion({
+    super.key,
+    required this.child,
+    this.theme = StatusBarTheme.light,
+  });
 
   @override
   Widget build(BuildContext context) {
