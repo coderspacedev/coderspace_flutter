@@ -84,7 +84,7 @@ class _TypewriterTextState extends State<TypewriterText> {
         : _text.substring(0, _currentLength);
 
     final withCursor = widget.cursor != null
-        ? displayed + (widget.loop || !_finished ? widget.cursor! : '')
+        ? displayed + (widget.loop || !_finished ? widget.cursor ?? '' : '')
         : displayed;
 
     return Text(withCursor, style: widget.style);

@@ -39,7 +39,7 @@ extension SnackBarExtension on BuildContext {
       SnackBarType.warning: Colors.orange,
       SnackBarType.info: Colors.blue,
       SnackBarType.defaultMode: Colors.black54,
-    }[type]!;
+    }[type];
 
     // Final chosen background
     final bg = backgroundColor ?? defaultBackground;
