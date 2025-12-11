@@ -1,56 +1,42 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:coderspace/coderspace.dart';
 
-/// A customizable top app bar for Flutter apps, compatible with phones and tablets.
-///
-/// Supports optional back icon, title, styling, toolbar height, and a bottom widget.
-///
-/// Example usage:
-/// ```dart
-/// CoderBar(
-///   title: 'Dashboard',
-///   actions: [IconButton(icon: Icon(Icons.settings), onPressed: () {})],
-/// )
-/// ```
+/// A fully customizable app bar supporting:
+/// - custom leading widget
+/// - auto iOS back button
+/// - title as string or widget
+/// - custom height, actions, and colors
 class CoderBar extends StatelessWidget implements PreferredSizeWidget {
-  /// Optional title text to display in the center or start of the app bar.
+  /// Title text (optional if using [titleWidget])
   final String? title;
 
-  /// Icon to use for the back button. Defaults to [Icons.arrow_back_rounded].
-  final IconData? icon;
+  /// Custom title widget (overrides [title])
+  final Widget? titleWidget;
 
-  /// Background color of the app bar. Defaults to [colorBackground].
-  final Color? backgroundColor;
+  /// Custom leading icon/widget
+  final Widget? leading;
 
-  /// Color of the back icon. Defaults to [colorText].
-  final Color? iconColor;
-
-  /// Color of the title text. Defaults to [colorText].
-  final Color? textColor;
-
-  /// Elevation of the app bar. Defaults to `0`.
-  final double? elevation;
-
-  /// Custom toolbar height. If not set, adjusts based on screen size.
-  final double? toolbarHeight;
-
-  /// Horizontal spacing before the title.
-  final double? titleSpacing;
-
-  /// Custom text style for the title. Defaults to `headline5` with weight 600.
-  final TextStyle? titleStyle;
-
-  /// Optional list of widgets displayed in the trailing action area.
-  final List<Widget>? actions;
-
-  /// Whether to show the back button. Defaults to `false`.
+  /// Whether to show automatic back button
   final bool isBack;
 
-  /// Whether to center the title. Defaults to `false`.
-  final bool centerTitle;
+  /// Background color
+  final Color? backgroundColor;
 
-  /// Callback triggered when back button is tapped. Defaults to `Navigator.pop()`.
-  final VoidCallback? onBack;
+  /// Title text color
+  final Color? textColor;
+
+  /// Back icon color
+  final Color? iconColor;
+
+  /// Elevation
+  final double? elevation;
+
+  /// Custom height
+  final double? height;
+
+  /// Center title
+  final bool centerTitle;
 
   /// Whether to apply transparent background when scrolling. Defaults to `false`.
   final bool forceMaterialTransparency;
@@ -58,96 +44,90 @@ class CoderBar extends StatelessWidget implements PreferredSizeWidget {
   /// If true, Flutter auto adds a back button when there's a Navigator ancestor.
   final bool automaticallyImplyLeading;
 
-  /// A widget to display at the bottom of the app bar (like a tab bar).
+  /// Actions
+  final List<Widget>? actions;
+
+  /// Callback when back pressed
+  final VoidCallback? onBack;
+
+  /// Bottom widget (e.g., TabBar)
   final PreferredSizeWidget? bottom;
 
-  /// Creates a customizable app bar used across the app.
+  /// Creates a flexible, themed app bar.
   const CoderBar({
     super.key,
     this.title,
-    this.icon,
+    this.titleWidget,
+    this.leading,
+    this.isBack = false,
     this.backgroundColor,
     this.iconColor,
     this.textColor,
     this.elevation,
-    this.toolbarHeight,
-    this.titleSpacing,
-    this.titleStyle,
-    this.actions,
-    this.isBack = false,
+    this.height,
     this.centerTitle = false,
-    this.onBack,
     this.forceMaterialTransparency = false,
     this.automaticallyImplyLeading = false,
+    this.actions,
+    this.onBack,
     this.bottom,
   });
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      elevation: elevation ?? 0,
-      centerTitle: centerTitle,
-      backgroundColor: backgroundColor ?? AppTheme.colors.background,
-      automaticallyImplyLeading: automaticallyImplyLeading,
-      forceMaterialTransparency: forceMaterialTransparency,
-      titleSpacing: titleSpacing ?? 0,
-      toolbarHeight: toolbarHeight ?? (context.isTabletSize ? 100.0 : 56.0),
-      leading: isBack
-          ? IconButton(
-              onPressed: onBack ?? () => Navigator.of(context).pop(),
-              icon: Icon(
-                icon ?? Icons.arrow_back_rounded,
-                size: context.scale(24),
+    final bool isIOS = Theme.of(context).platform == TargetPlatform.iOS;
+
+    /// Default leading for back button logic
+    Widget? defaultLeading;
+    if (isBack) {
+      defaultLeading = IconButton(
+        onPressed: onBack ?? () => Navigator.of(context).pop(),
+        icon: isIOS
+            ? Icon(
+                CupertinoIcons.back,
+                size: context.scaleBoth(24),
+                color: iconColor ?? AppTheme.colors.text,
+              )
+            : Icon(
+                Icons.arrow_back_rounded,
+                size: context.scaleBoth(24),
                 color: iconColor ?? AppTheme.colors.text,
               ),
-              padding: EdgeInsets.zero,
-              splashColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-            )
-          : null,
-      title: title != null
-          ? Padding(
-              padding: EdgeInsets.only(
-                left: isBack
-                    ? context.scale(4)
-                    : centerTitle
-                    ? context.scale(0)
-                    : context.scale(16),
-              ),
-              child: Text(
-                title ?? '',
-                style:
-                    titleStyle ??
-                    context.headline5.copyWith(
-                      color: textColor ?? AppTheme.colors.text,
-                      fontWeight: FontWeight.w600,
-                    ),
-              ),
-            )
-          : const SizedBox.shrink(),
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+      );
+    }
+
+    /// Final leading: custom > back > none
+    final leadingWidget = leading ?? defaultLeading;
+
+    /// Build title: widget > text > none
+    final Widget? finalTitle =
+        titleWidget ??
+        (title != null
+            ? Text(
+                title??'',
+                style: context.headline5.copyWith(
+                  color: textColor ?? AppTheme.colors.text,
+                  fontWeight: FontWeight.w600,
+                ),
+              )
+            : null);
+
+    return AppBar(
+      backgroundColor: backgroundColor ?? AppTheme.colors.background,
+      elevation: elevation ?? 0,
+      centerTitle: centerTitle,
+      toolbarHeight: height ?? (context.isTabletSize ? 100 : 56),
+      leading: leadingWidget,
+      title: finalTitle,
+      automaticallyImplyLeading: automaticallyImplyLeading,
+      forceMaterialTransparency: forceMaterialTransparency,
       actions: actions,
       bottom: bottom,
     );
   }
 
-  /// Calculates the preferred height of the app bar depending on device size.
   @override
-  Size get preferredSize {
-    final shortestSide =
-        WidgetsBinding
-            .instance
-            .platformDispatcher
-            .views
-            .first
-            .physicalSize
-            .shortestSide /
-        WidgetsBinding.instance.platformDispatcher.views.first.devicePixelRatio;
-
-    final defaultToolbarHeight =
-        toolbarHeight ?? (shortestSide > 600 ? 100.0 : 56.0);
-
-    return Size.fromHeight(
-      defaultToolbarHeight + (bottom?.preferredSize.height ?? 0),
-    );
-  }
+  Size get preferredSize => Size.fromHeight((height ?? 56) + (bottom?.preferredSize.height ?? 0));
 }

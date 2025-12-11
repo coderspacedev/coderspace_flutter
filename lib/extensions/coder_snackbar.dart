@@ -2,7 +2,7 @@ import 'package:coderspace/coderspace.dart';
 import 'package:flutter/material.dart';
 
 /// Types of snackbars used to indicate different states or messages.
-enum SnackBarType { success, error, info, warning }
+enum SnackBarType { success, error, info, warning, defaultMode }
 
 /// Extension on [BuildContext] to easily show styled snackbars based on [SnackBarType].
 ///
@@ -11,78 +11,56 @@ enum SnackBarType { success, error, info, warning }
 /// context.showSnackBar('Operation successful', type: SnackBarType.success);
 /// ```
 extension SnackBarExtension on BuildContext {
-  /// Displays a customizable [SnackBar] with type-based styling.
+  /// Shows a clean floating snackbar with optional overrides.
   ///
-  /// - [message]: The main text message shown in the snackbar.
-  /// - [type]: Type of snackbar ([SnackBarType.success], [SnackBarType.error], etc.)
-  ///           which determines the color and default icon.
-  /// - [duration]: Optional duration of the snackbar (default is 3 seconds).
-  /// - [title]: Optional title to show above the message.
-  /// - [icon]: Optional icon to override the default icon for each type.
-  void showSnackBar(
+  /// - [message] → Text displayed
+  /// - [type] → Controls default color set
+  /// - [backgroundColor] → Manually override background (optional)
+  /// - [textColor] → Manually override text color (optional)
+  /// - [duration] → Duration to display
+  void showSnack(
     String message, {
-    SnackBarType type = SnackBarType.info,
+    SnackBarType type = SnackBarType.defaultMode,
+    Color? backgroundColor,
+    Color? textColor,
     Duration duration = const Duration(seconds: 1),
-    String? title,
-    IconData? icon,
   }) {
     final messenger = ScaffoldMessenger.maybeOf(this);
+
     if (messenger == null) {
-      debugPrint('⚠️ ScaffoldMessenger not found. SnackBar not shown.');
+      debugPrint("⚠️ ScaffoldMessenger not found, snackbar cannot be shown.");
       return;
     }
 
-    // Set background color and default icon based on type
-    Color backgroundColor;
-    IconData defaultIcon;
+    // Default color set for each type
+    final defaultBackground = {
+      SnackBarType.success: Colors.green,
+      SnackBarType.error: Colors.red,
+      SnackBarType.warning: Colors.orange,
+      SnackBarType.info: Colors.blue,
+      SnackBarType.defaultMode: Colors.black54,
+    }[type]!;
 
-    switch (type) {
-      case SnackBarType.success:
-        backgroundColor = Colors.green;
-        defaultIcon = Icons.check_circle;
-        break;
-      case SnackBarType.error:
-        backgroundColor = Colors.red;
-        defaultIcon = Icons.error;
-        break;
-      case SnackBarType.warning:
-        backgroundColor = Colors.orange;
-        defaultIcon = Icons.warning;
-        break;
-      case SnackBarType.info:
-        backgroundColor = Colors.blue;
-        defaultIcon = Icons.info;
-        break;
-    }
+    // Final chosen background
+    final bg = backgroundColor ?? defaultBackground;
 
-    // Clear any existing snackbars before showing a new one
-    ScaffoldMessenger.of(this).clearSnackBars();
+    // Text color depending on contrast
+    final fg = textColor ?? Colors.white;
 
-    // Show the snackbar
-    ScaffoldMessenger.of(this).showSnackBar(
+    messenger.clearSnackBars();
+
+    messenger.showSnackBar(
       SnackBar(
         duration: duration,
         behavior: SnackBarBehavior.floating,
-        backgroundColor: backgroundColor,
-        content: Row(
-          children: [
-            Icon(icon ?? defaultIcon, color: Colors.white),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (title != null)
-                    Text(
-                      title,
-                      style: bodyBoldLarge.copyWith(color: Colors.white),
-                    ),
-                  Text(message, style: caption.copyWith(color: Colors.white)),
-                ],
-              ),
-            ),
-          ],
+        backgroundColor: bg,
+        margin: const EdgeInsets.all(16),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        content: Text(
+          message,
+          style: bodyMedium.copyWith(color: fg), // your custom style
         ),
       ),
     );

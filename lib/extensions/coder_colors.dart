@@ -43,6 +43,15 @@ const darkCoderColor = CoderColor(
   accentText: Color(0xFFFFFFFF),
 );
 
+// Access color easily
+Color get background => AppTheme.colors.background;
+Color get bg => AppTheme.colors.background;
+Color get text => AppTheme.colors.text;
+Color get card => AppTheme.colors.card;
+Color get cardText => AppTheme.colors.cardText;
+Color get accent => AppTheme.colors.accent;
+Color get accentText => AppTheme.colors.accentText;
+
 /// Theme manager that switches between light and dark CoderColors
 class AppTheme {
   // Store light and dark theme color sets

@@ -41,51 +41,51 @@ class _ExampleState extends State<Example> {
           children: [
             CoderButton(
               text: "Click Me",
-              paddingH: context.scale(56),
+              paddingH: context.scaleBoth(56),
               onPressed: () {
-                context.showSnackBar('Click Me');
+                context.showSnack('Click Me');
               },
             ),
-            SizedBox(height: context.scale(16)),
+            SizedBox(height: context.scaleBoth(16)),
             CoderTextField(
               controller: TextEditingController(),
               hint: "Enter your name",
               prefixIcon: Icons.person,
             ),
-            SizedBox(height: context.scale(16)),
+            SizedBox(height: context.scaleBoth(16)),
             CoderContainer(
-              padding: EdgeInsets.all(context.scale(16)),
+              padding: EdgeInsets.all(context.scaleBoth(16)),
               color: AppTheme.colors.card,
               child: Text("CoderContainer", style: context.bodyLarge),
             ),
-            SizedBox(height: context.scale(16)),
+            SizedBox(height: context.scaleBoth(16)),
             CoderCard(
               title: "Card Title",
               subtitle: "Subtitle here",
               trailing: Icon(Icons.arrow_forward_ios),
               onTap: () {},
             ),
-            SizedBox(height: context.scale(16)),
+            SizedBox(height: context.scaleBoth(16)),
             CoderShakingIcon(
               iconData: Icons.alarm,
-              size: context.scale(36),
+              size: context.scaleBoth(36),
               duration: const Duration(seconds: 2),
             ),
-            SizedBox(height: context.scale(16)),
+            SizedBox(height: context.scaleBoth(16)),
             CoderCircularShake(
               child: Icon(
                 Icons.star,
-                size: context.scale(48),
+                size: context.scaleBoth(48),
                 color: Colors.amber,
               ),
             ),
-            SizedBox(height: context.scale(16)),
+            SizedBox(height: context.scaleBoth(16)),
             CoderAnimatedGradientBorder(
               gradientColors: [Colors.blue, Colors.purple],
-              borderRadius: BorderRadius.circular(context.scale(16)),
+              borderRadius: BorderRadius.circular(context.scaleBoth(16)),
               child: CoderContainer(
-                padding: EdgeInsets.all(context.scale(24)),
-                margin: EdgeInsets.all(context.scale(2)),
+                padding: EdgeInsets.all(context.scaleBoth(24)),
+                margin: EdgeInsets.all(context.scaleBoth(2)),
                 child: Text('Gradient Border', style: context.bodyBoldLarge),
               ),
             ),

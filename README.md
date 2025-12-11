@@ -34,7 +34,7 @@ Looking for more tools to speed up your Flutter development? Check out these pac
 
 ## ✨ Extensions Included
 
-- `showSnackBar()` – Show themed SnackBars easily via context.showSnackBar(), with support for types, icons, durations, and titles.
+- `showSnack()` – Show themed SnackBars easily via context.showSnack(), with support for types, durations, and titles.
 - `ContextExtensions` – Quickly access screen size, safe area insets, orientation, and theme mode using context.
 - `AppStyles` – Get responsive text styles and scaling directly from context for spacing, buttons, and typography.
 - `DateTimeExtensions` – Format dates and generate "time ago" strings like "2 hours ago" with simple .formattedDate and .timeAgo.
@@ -321,32 +321,32 @@ final isLandscape = context.isLandscape;                 // Device is in landsca
 This extension adds easy-to-use navigation helpers to BuildContext, simplifying route transitions across your Flutter app:
 ```dart
 // Push a new screen
-context.push(SecondScreen());
+context.pushScreen(SecondScreen());
 
 // Replace current screen
-context.pushReplacement(HomeScreen());
+context.pushScreenReplacement(HomeScreen());
 
 // Push and clear all previous screens
-context.pushAndRemoveAll(LoginScreen());
+context.pushScreenAndRemoveAll(LoginScreen());
 
 // Pop the current screen
-context.pop();
+context.popScreen();
 
 // Pop with a result
-context.pop('resultValue');
+context.popScreen('resultValue');
 
 // Pop until a condition is met
-context.popUntil((route) => route.isFirst);
+context.popScreenUntil((route) => route.isFirst);
 
 // Check if back navigation is possible
-final canGoBack = context.canPop();
+final canGoBack = context.canScreenPop();
 ```
 
 #### 🎯 Quick Usage – AppStyles
 Use responsive TextStyles and size scaling across your app with context.
 ```dart
 // 🎯 Responsive spacing
-final padding = EdgeInsets.all(context.scale(12));
+final padding = EdgeInsets.all(context.scaleBoth(12));
 
 // 🅰️ Headline Styles
 Text('Headline 1', style: context.headline1);

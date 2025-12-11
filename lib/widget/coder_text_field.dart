@@ -77,14 +77,14 @@ class CoderTextField extends StatelessWidget {
         filled: true,
         fillColor: AppTheme.colors.card,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(context.scale(12)),
+          borderRadius: BorderRadius.circular(context.scaleBoth(12)),
           borderSide: BorderSide.none,
         ),
         contentPadding:
             contentPadding ??
             EdgeInsets.symmetric(
-              horizontal: context.scale(16),
-              vertical: context.scale(14),
+              horizontal: context.scaleBoth(16),
+              vertical: context.scaleBoth(14),
             ),
       ),
     );

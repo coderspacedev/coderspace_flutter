@@ -76,7 +76,7 @@ class CoderButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: height ?? context.scale(48),
+      height: height ?? context.scaleBoth(48),
       width: width,
       child: ElevatedButton(
         style:
@@ -85,7 +85,7 @@ class CoderButton extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius:
                     borderRadius ??
-                    BorderRadius.circular(radius ?? context.scale(12)),
+                    BorderRadius.circular(radius ?? context.scaleBoth(12)),
               ),
               elevation: 0,
               padding: EdgeInsets.symmetric(
@@ -102,10 +102,10 @@ class CoderButton extends StatelessWidget {
         },
         child: isLoading
             ? SizedBox(
-                width: context.scale(20),
-                height: context.scale(20),
+                width: context.scaleBoth(20),
+                height: context.scaleBoth(20),
                 child: CircularProgressIndicator(
-                  strokeWidth: context.scale(2),
+                  strokeWidth: context.scaleBoth(2),
                   valueColor: AlwaysStoppedAnimation<Color>(
                     textColor ?? AppTheme.colors.accentText,
                   ),
@@ -117,7 +117,7 @@ class CoderButton extends StatelessWidget {
                 children: [
                   if (icon != null) ...[
                     ?icon,
-                    SizedBox(width: context.scale(8)),
+                    SizedBox(width: context.scaleBoth(8)),
                   ],
                   Flexible(
                     child: Text(
@@ -126,7 +126,7 @@ class CoderButton extends StatelessWidget {
                       style:
                           style ??
                           context.button.copyWith(
-                            color: textColor ?? AppTheme.colors.accent,
+                            color: textColor ?? AppTheme.colors.accentText,
                           ),
                     ),
                   ),
