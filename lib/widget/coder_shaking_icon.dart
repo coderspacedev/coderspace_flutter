@@ -124,7 +124,7 @@ class _CoderShakingIconState extends State<CoderShakingIcon>
         width: widget.size,
         height: widget.size,
         colorFilter: widget.color != null
-            ? ColorFilter.mode(widget.color??Colors.black, widget.blendMode)
+            ? ColorFilter.mode(widget.color ?? Colors.black, widget.blendMode)
             : null,
       );
     } else if (widget.imageAssetPath != null) {

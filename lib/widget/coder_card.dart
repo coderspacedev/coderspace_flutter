@@ -78,7 +78,10 @@ class CoderCard extends StatelessWidget {
           child: Row(
             children: [
               // Show leading widget if provided
-              if (leading != null) ...[leading ?? SizedBox.shrink(), const SizedBox(width: 12)],
+              if (leading != null) ...[
+                leading ?? SizedBox.shrink(),
+                const SizedBox(width: 12),
+              ],
               // Expandable content area for title and subtitle
               Expanded(
                 child: Column(
@@ -97,7 +100,9 @@ class CoderCard extends StatelessWidget {
                       Text(
                         subtitle ?? '',
                         style: context.bodySmall.copyWith(
-                          color: subtitleColor ?? AppTheme.colors.cardText.withAlpha(150),
+                          color:
+                              subtitleColor ??
+                              AppTheme.colors.cardText.withAlpha(150),
                         ),
                       ),
                     ],
@@ -110,7 +115,10 @@ class CoderCard extends StatelessWidget {
                 ),
               ),
               // Show trailing widget if provided
-              if (trailing != null) ...[const SizedBox(width: 12), trailing ?? SizedBox.shrink()],
+              if (trailing != null) ...[
+                const SizedBox(width: 12),
+                trailing ?? SizedBox.shrink(),
+              ],
             ],
           ),
         ),
