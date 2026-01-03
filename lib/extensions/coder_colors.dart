@@ -44,7 +44,7 @@ const darkCoderColor = CoderColor(
 );
 
 // Access color easily
-Color get background => AppTheme.colors.background;
+Color get primary => AppTheme.colors.primary;
 Color get bg => AppTheme.colors.background;
 Color get text => AppTheme.colors.text;
 Color get card => AppTheme.colors.card;

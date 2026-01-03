@@ -342,11 +342,23 @@ context.popScreenUntil((route) => route.isFirst);
 final canGoBack = context.canScreenPop();
 ```
 
+
 #### 🎯 Quick Usage – AppStyles
 Use responsive TextStyles and size scaling across your app with context.
 ```dart
 // 🎯 Responsive spacing
 final padding = EdgeInsets.all(context.scaleBoth(12));
+
+// ✅ Google Font
+DynamicFontController.instance.setGoogleFont(
+  ([base]) => GoogleFonts.lato(textStyle: base),
+);
+
+// ✅ Local font (make sure it’s added in pubspec.yaml)
+DynamicFontController.instance.setLocalFont("MyLocalFont");
+
+// ✅ System default font
+DynamicFontController.instance.setSystemFont();
 
 // 🅰️ Headline Styles
 Text('Headline 1', style: context.headline1);

@@ -2,6 +2,7 @@ import 'package:coderspace/extensions/coder_scale.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../controller/font_controller.dart';
 import 'coder_colors.dart';
 
 /// Extension to provide responsive text styles and scaled sizing for different screen widths.
@@ -48,33 +49,34 @@ extension AppStyles on BuildContext {
   /// [fontWeight]: weight of the text (default: normal).
   /// [lineHeight]: height of line spacing.
   /// [color]: text color (defaults to [colorText]).
+
   TextStyle baseTextStyle(
     double fontSize, {
     FontWeight fontWeight = FontWeight.normal,
     double lineHeight = 1.2,
     Color? color,
   }) {
-    return GoogleFonts.poppins(
+    TextStyle style = GoogleFonts.montserrat(
       fontSize: fontSize.scaleBoth(this),
       fontWeight: fontWeight,
       height: lineHeight,
       color: color ?? text,
     );
+
+    // Apply dynamic font
+    return DynamicFontController.instance.applyFont(style);
   }
 
   // ───────────────────── Headline Styles ─────────────────────
 
   /// Very large bold headline (scaled 52px).
-  TextStyle get headline1 =>
-      baseTextStyle(52, fontWeight: FontWeight.bold, lineHeight: 1.2);
+  TextStyle get headline1 => baseTextStyle(52, fontWeight: FontWeight.bold, lineHeight: 1.2);
 
   /// Large bold headline (scaled 36px).
-  TextStyle get headline2 =>
-      baseTextStyle(36, fontWeight: FontWeight.bold, lineHeight: 1.2);
+  TextStyle get headline2 => baseTextStyle(36, fontWeight: FontWeight.bold, lineHeight: 1.2);
 
   /// Medium bold headline (scaled 28px).
-  TextStyle get headline3 =>
-      baseTextStyle(28, fontWeight: FontWeight.bold, lineHeight: 1.25);
+  TextStyle get headline3 => baseTextStyle(28, fontWeight: FontWeight.bold, lineHeight: 1.25);
 
   /// Sub-heading style (scaled 24px).
   TextStyle get headline4 => baseTextStyle(24, fontWeight: FontWeight.w600);
@@ -88,12 +90,10 @@ extension AppStyles on BuildContext {
   TextStyle get bodyExtraLarge => baseTextStyle(18);
 
   /// Bold extra large body text (scaled 18px).
-  TextStyle get bodyBoldExtraLarge =>
-      baseTextStyle(18, fontWeight: FontWeight.w600);
+  TextStyle get bodyBoldExtraLarge => baseTextStyle(18, fontWeight: FontWeight.w600);
 
   /// Medium extra large body text (scaled 18px).
-  TextStyle get bodyMediumExtraLarge =>
-      baseTextStyle(18, fontWeight: FontWeight.w500);
+  TextStyle get bodyMediumExtraLarge => baseTextStyle(18, fontWeight: FontWeight.w500);
 
   /// Large body text (scaled 16px).
   TextStyle get bodyLarge => baseTextStyle(16);
@@ -102,15 +102,13 @@ extension AppStyles on BuildContext {
   TextStyle get bodyBoldLarge => baseTextStyle(16, fontWeight: FontWeight.w600);
 
   /// Medium large body text (scaled 16px).
-  TextStyle get bodyMediumLarge =>
-      baseTextStyle(16, fontWeight: FontWeight.w500);
+  TextStyle get bodyMediumLarge => baseTextStyle(16, fontWeight: FontWeight.w500);
 
   /// Medium body text (scaled 14px).
   TextStyle get bodyMedium => baseTextStyle(14);
 
   /// Bold medium body text (scaled 14px).
-  TextStyle get bodyBoldMedium =>
-      baseTextStyle(14, fontWeight: FontWeight.w600);
+  TextStyle get bodyBoldMedium => baseTextStyle(14, fontWeight: FontWeight.w600);
 
   /// Small body text (scaled 12px).
   TextStyle get bodySmall => baseTextStyle(12, lineHeight: 1.1);
@@ -127,9 +125,6 @@ extension AppStyles on BuildContext {
   TextStyle get button => baseTextStyle(18, fontWeight: FontWeight.w600);
 
   /// Accent-colored button style (scaled 18px, bold).
-  TextStyle get accentButton => baseTextStyle(
-    18,
-    fontWeight: FontWeight.w600,
-    color: AppTheme.colors.accentText,
-  );
+  TextStyle get accentButton =>
+      baseTextStyle(18, fontWeight: FontWeight.w600, color: AppTheme.colors.accentText);
 }

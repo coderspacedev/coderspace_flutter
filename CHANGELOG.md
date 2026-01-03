@@ -1,2 +1,2 @@
-## [1.0.17] - 2025-12-11
-### Fix bug
+## [1.0.18] - 2026-01-03
+### Add fonts controller dynamically
