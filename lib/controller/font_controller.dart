@@ -63,10 +63,5 @@ class FontConfig {
   final TextStyle Function([TextStyle?])? googleFont;
   final String? localFontFamily;
 
-  FontConfig({
-    required this.source,
-    this.googleFont,
-    this.localFontFamily,
-  });
+  FontConfig({required this.source, this.googleFont, this.localFontFamily});
 }
-
